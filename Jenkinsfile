@@ -29,7 +29,7 @@ pipeline{
         stage('Unit Test'){
             steps{
                 script{
-                    sh "cd BankingAPIs && dotnet test --logger:trx"
+                    sh "cd backendproj && dotnet test --logger:trx"
                 }
                 
             }
@@ -37,14 +37,14 @@ pipeline{
         stage('Build'){
             steps{
                 script{
-                    sh "cd BankingAPIs && dotnet add"
+                    sh "cd backendproj && dotnet add"
                 }
             }
         }
         stage('Build image'){
             steps{
                 script{
-                    sh "cd BankingAPIs && docker build -t lizdockerhub/dotnetapp ."
+                    sh "cd backendproj && docker build -t lizdockerhub/dotnetapp ."
                 }
             }
         }
