@@ -1,7 +1,7 @@
 pipeline{
     agent any
 
-    stages {
+    stages{
         stage('Initial_cleanup'){
             steps {
 
@@ -34,10 +34,10 @@ pipeline{
                 
             }
         }
-        stage('Build image'){
+        stage('Build'){
             steps{
                 script{
-                    sh "cd BankingAPIs && dotnet install"
+                    sh "cd BankingAPIs && dotnet add"
                 }
             }
         }
@@ -65,11 +65,6 @@ pipeline{
                 
             }
         }
-
-            
-
-           
-        
         
     }
 }
