@@ -14,7 +14,7 @@ pipeline{
         stage('checkout'){
             steps {
                 script {
-                    sh "git clone https://github.com/DevProject03/DevOpsproj"
+                    sh "git clone https://github.com/DevProject03/backendproj"
                 }
                 
             }
