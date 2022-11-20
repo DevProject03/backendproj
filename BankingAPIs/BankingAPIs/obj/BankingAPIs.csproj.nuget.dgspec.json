@@ -10,11 +10,11 @@
         "projectUniqueName": "/home/lizzy/Desktop/Backendproj2/BankingAPIs/BankingAPIs/BankingAPIs.csproj",
         "projectName": "BankingAPIs",
         "projectPath": "/home/lizzy/Desktop/Backendproj2/BankingAPIs/BankingAPIs/BankingAPIs.csproj",
-        "packagesPath": "/root/.nuget/packages/",
+        "packagesPath": "/home/lizzy/.nuget/packages/",
         "outputPath": "/home/lizzy/Desktop/Backendproj2/BankingAPIs/BankingAPIs/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/root/.nuget/NuGet/NuGet.Config"
+          "/home/lizzy/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
