@@ -22,7 +22,7 @@ pipeline{
         stage('Restore packages') {
             steps {
                 script{
-                    sh "cd BankingAPIs && dotnet restore BankingAPIs"
+                    sh "cd backendproj && dotnet restore BankingAPIs"
                 }
             }
         }
