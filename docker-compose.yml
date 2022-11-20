@@ -1,0 +1,11 @@
+version: '3.5'
+services:
+  backend:
+    image: 'mcr.microsoft.com/dotnet/aspnet:6.0' 
+    ports:
+      - '8001:80'
+  db:
+    image: 'mysql'
+    ports:
+      - '8002:3306'
+  
