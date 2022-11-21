@@ -26,6 +26,13 @@ pipeline{
                 }
             }
         }
+        stage('Publish'){
+            steps{
+                script{
+                    sh "cd backendproj && dotnet publish"
+                }
+            }
+        }
         stage('Unit Test'){
             steps{
                 script{
@@ -41,6 +48,7 @@ pipeline{
                 }
             }
         }
+    
         stage('Build image'){
             steps{
                 script{
