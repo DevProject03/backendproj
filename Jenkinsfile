@@ -29,7 +29,7 @@ pipeline{
         stage('Publish'){
             steps{
                 script{
-                    sh "cd backendproj && dotnet publish"
+                    sh "cd backendproj && dotnet publish BankingAPIs"
                 }
             }
         }
