@@ -11,14 +11,14 @@ namespace BankingAPIs.Controllers
     [ApiController]
     public class SignUpController : ControllerBase
     {
-        private DataBank _dbcontext;
+        //private DataBank _dbcontext;
         private IMapper _mapper;
         private ISignUp _signup;
         Random rand = new Random();
 
-        public SignUpController(DataBank dataBank, IMapper mapper, ISignUp signUp)
+        public SignUpController(IMapper mapper, ISignUp signUp)
         {
-            _dbcontext = dataBank;
+            //_dbcontext = dataBank;
             _mapper = mapper;
             _signup = signUp;
         }
@@ -36,14 +36,14 @@ namespace BankingAPIs.Controllers
             var b = Convert.ToString((long)Math.Floor(rand.NextDouble()
                 * 9_000_000L + 1_000_000L));
 
-            d.AccountGenerated = Convert.ToString(a+b);
+            d.AccountGenerated = Convert.ToString(a + b);
 
             d.DateCreated = DateTime.Now;
             d.DateUpdated = DateTime.Now;
-            
 
 
-            
+
+
 
             if (d == null)
             {
@@ -51,7 +51,7 @@ namespace BankingAPIs.Controllers
             }
             return Ok(_signup.Create(signup, signup.Password, signup.ConfirmPassword));
 
-           // _dbcontext.CustomerAccounts.Add(d);
+            // _dbcontext.CustomerAccounts.Add(d);
 
             //return _bankData.AcoountDetails.ToArray();
 
