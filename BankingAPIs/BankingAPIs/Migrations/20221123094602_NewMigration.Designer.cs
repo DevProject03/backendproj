@@ -3,6 +3,7 @@ using System;
 using BankingAPIs.DATA;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAPIs.Migrations
 {
     [DbContext(typeof(DataBank))]
-    partial class DataBankModelSnapshot : ModelSnapshot
+    [Migration("20221123094602_NewMigration")]
+    partial class NewMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,11 +50,12 @@ namespace BankingAPIs.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("AccountGenerated")
-                        .HasColumnType("varchar(255)");
-
                     b.Property<double>("AccountBalance")
                         .HasColumnType("double");
+
+                    b.Property<string>("AccountGenerated")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
@@ -89,7 +92,7 @@ namespace BankingAPIs.Migrations
                     b.Property<int>("gender")
                         .HasColumnType("int");
 
-                    b.HasKey("Id", "AccountGenerated");
+                    b.HasKey("Id");
 
                     b.ToTable("CustomerAccounts");
                 });

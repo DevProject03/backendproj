@@ -13,7 +13,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped <ISignUp, Signup>();
 builder.Services.AddScoped<ICustomerAccount, Account_Repo>();
-var connectionString = builder.Configuration.GetConnectionString(name: "DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString(name: "DefaultConnections");
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataBank>(opt =>

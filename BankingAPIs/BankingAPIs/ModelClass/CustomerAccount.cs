@@ -1,14 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BankingAPIs.ModelClass
 {
     public class CustomerAccount
     {
-       /* public CustomerAccount()
-        {
-            var AccountGenerated = Convert.ToString((long)Math.Floor(rand.NextDouble()
-                * 9_000_000_000L + 1_000_000_000L));
-        }*/
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string FristName { get; set; }
         public string LastName { get; set; }
@@ -19,7 +17,7 @@ namespace BankingAPIs.ModelClass
         public double AccountBalance { get; set; }
         public string Password { get; set; }
         //public string ConfrimPassword { get; set; }
-        [Key]
+        //[Key]
         public string AccountGenerated { get; set; }
         public AccountType accountType { get; set; }
         public DateTime DateCreated { get; set; }

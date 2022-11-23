@@ -13,15 +13,15 @@ namespace BankingAPIs.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private DataBank _dbcontext;
+        //private DataBank _dbcontext;
         private ICustomerAccount _customerAccount;
 
         private IMapper _mapper;
         private Account_Repo _account_repo;
 
-        public AccountController(DataBank Bankdata, IMapper mapper, ICustomerAccount customerAccount)
+        public AccountController(IMapper mapper, ICustomerAccount customerAccount)
         {
-            _dbcontext = Bankdata;
+            //_dbcontext = Bankdata;
             _customerAccount = customerAccount;
             mapper = mapper;
             //_account_repo = account_Repo;
@@ -30,8 +30,9 @@ namespace BankingAPIs.Controllers
         [HttpGet("getAccountById")]
         public ActionResult GetAccountById(int Id)
         {
+            var d = _customerAccount.GetAccountById(Id);
 
-            var d = _dbcontext.CustomerAccounts.Where(x => x.Id == Id).FirstOrDefault();
+            //var d = _dbcontext.CustomerAccounts.Where(x => x.Id == Id).FirstOrDefault();
 
             if (d == null)
             {
@@ -45,8 +46,9 @@ namespace BankingAPIs.Controllers
         [HttpGet("getAccountByName")]
         public ActionResult GetAccountByName(string Name)
         {
+            var d = _customerAccount.GetAccountByName(Name);
 
-            var d = _dbcontext.CustomerAccounts.Where(x => x.FristName == Name).FirstOrDefault();
+            //var d = _dbcontext.CustomerAccounts.Where(x => x.FristName == Name).FirstOrDefault();
 
             if (d == null)
             {
@@ -61,8 +63,10 @@ namespace BankingAPIs.Controllers
         public ActionResult GetAccountByAccountNumber(string AccountNumber)
         {
 
-            var d = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber)
-                .FirstOrDefault();
+            var d = _customerAccount.GetAccountByAccountNumber(AccountNumber);
+
+            // var d = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber)
+            // .FirstOrDefault();
 
             if (d == null)
             {
@@ -72,12 +76,16 @@ namespace BankingAPIs.Controllers
 
             return Ok(d);
         }
+
         [HttpGet("getDetails")]
 
-        public async Task<ActionResult<IEnumerable<CustomerAccount>>> GetDetails()
+        public ActionResult GetDetails()
         {
 
-            return _dbcontext.CustomerAccounts.ToArray();
+
+            //return _dbcontext.CustomerAccounts.ToArray();
+            var b = _customerAccount.GetAccounts();
+            return Ok(b);
 
         }
 
@@ -140,26 +148,26 @@ namespace BankingAPIs.Controllers
 
         public ActionResult DeleteCustomer(string AccountNumber)
         {
-           var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
+            var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
             if (acc == null)
             {
                 return BadRequest("Not Found");
             }
 
-            _dbcontext.CustomerAccounts.Remove(acc);
+            //_dbcontext.CustomerAccounts.Remove(acc);
 
-           // _customerAccount.;
+            // _customerAccount.;
 
-            _dbcontext.SaveChanges();
-            
+            // _dbcontext.SaveChanges();
+
             return NoContent();
 
         }
 
         [HttpPost("Login")]
 
-        public ActionResult Login (string Email, string password)
+        public ActionResult Login(string Email, string password)
         {
             var b = _customerAccount.Login(Email, password);
 
@@ -178,17 +186,17 @@ namespace BankingAPIs.Controllers
             var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
             //var d = _mapper.Map<AccountDTO>(acc);
-           // accountDto.Email = acc.Email;
-             //accountDto.Password = acc.Password;
+            // accountDto.Email = acc.Email;
+            //accountDto.Password = acc.Password;
 
-            AccountDTO accountDTO = new AccountDTO() 
-            { 
+            AccountDTO accountDTO = new AccountDTO()
+            {
                 Email = acc.Email,
                 Password = acc.Password,
                 //DateUpdated = DateTime.Now()
             };
 
-           
+
             //AccountDTO s = _mapper.Map<CustomerAccount, AccountDTO>(acc);  
 
             if (accountDTO == null)
@@ -196,7 +204,7 @@ namespace BankingAPIs.Controllers
                 return BadRequest("Not Found");
             }
 
-            
+
 
             //return Ok(_customerAccount.UpdateCustomer(d));
 
