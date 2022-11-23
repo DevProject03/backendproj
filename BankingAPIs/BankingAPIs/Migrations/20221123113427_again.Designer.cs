@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAPIs.Migrations
 {
     [DbContext(typeof(DataBank))]
-    [Migration("20221118072656_first")]
-    partial class first
+    [Migration("20221123113427_again")]
+    partial class again
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,10 @@ namespace BankingAPIs.Migrations
 
             modelBuilder.Entity("BankingAPIs.ModelClass.CustomerAccount", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
                     b.Property<string>("AccountGenerated")
                         .HasColumnType("varchar(255)");
 
@@ -69,9 +73,6 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -90,7 +91,7 @@ namespace BankingAPIs.Migrations
                     b.Property<int>("gender")
                         .HasColumnType("int");
 
-                    b.HasKey("AccountGenerated");
+                    b.HasKey("Id", "AccountGenerated");
 
                     b.ToTable("CustomerAccounts");
                 });

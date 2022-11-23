@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fl/vg+nmYHGufg9ZdSB1/3wQTJgAgd8zTyF2keMwmM1zXCusH7bQQ7c6z4WwgygslkmvceDus4IYoWN/FXCk9A==",
+  "dgSpecHash": "dlcRHmx6J0SvuHNcEJw7JBvQLOOB6DwvefGFHk5zOnNNUCDQadhpt/RngFjff78kiRrFalUdKnLcONsOPd3Zbg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jlopez\\Source\\Repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj",
+  "projectFilePath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jlopez\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\jlopez\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

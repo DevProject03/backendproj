@@ -16,47 +16,11 @@ namespace BankingAPIs.Repos
 
         public Account_Repo(DataBank Bankdata, IMapper mapper)
         {
-           _dbcontext = Bankdata;
+            _dbcontext = Bankdata;
             _mapper = mapper;
         }
 
-       /* public CustomerAccount Create(CustomerAccount newaccount, string Password, string ConfirmPassword)
-        {
-            
-                if (string.IsNullOrWhiteSpace(Password) && string.IsNullOrWhiteSpace(ConfirmPassword))
-                    throw new ArgumentNullException("Password cannot be empty");
-
-                if (_dbcontext.CustomerAccounts.Any(x => x.Email == newaccount.Email))
-                    throw new ApplicationException("A user with thiss email exists");
-
-                if (_dbcontext.CustomerAccounts.Any(x => x.PhoneNumber == newaccount.PhoneNumber))
-                    throw new ApplicationException("A user with thiss email exists");
-
-            var newaccounts = new CustomerAccount
-            {
-                FristName = newaccount.FristName,
-                LastName = newaccount.LastName,
-                Email = newaccount.Email,
-                Password = newaccount.Password,
-                PhoneNumber = newaccount.PhoneNumber,
-                AccountBalance = 0.00,
-                AccountGenerated = newaccount.AccountGenerated,
-                accountType = newaccount.accountType,
-                DateCreated = DateTime.Now,
-                DateOfBirth = newaccount.DateOfBirth,
-                Gender = newaccount.Gender,
-
-
-
-            };
-
-            _dbcontext.CustomerAccounts.Add(newaccounts);
-                _dbcontext.SaveChanges();
-
-                return newaccounts;
-            
-        }
-       */
+       
         public CustomerAccount Create(CustomerAccount newacc, string Password)
         {
             _dbcontext.CustomerAccounts.Add(newacc);
@@ -90,7 +54,7 @@ namespace BankingAPIs.Repos
             return account;
         }
 
-        
+
 
         public CustomerAccount GetAccountById(int Id)
         {
@@ -106,24 +70,26 @@ namespace BankingAPIs.Repos
 
         public IEnumerable<CustomerAccount> GetAccounts()
         {
-            return _dbcontext.CustomerAccounts.ToArray();
+            var accounts = _dbcontext.CustomerAccounts.ToArray();
+
+            return accounts;
+
         }
 
         public IEnumerable<CustomerAccount> SearchAccounts(string SearchQuery)
         {
             IQueryable<CustomerAccount> customerAccounts1 = _dbcontext.CustomerAccounts;
-           
+
             if (string.IsNullOrEmpty(SearchQuery))
             {
                 return GetAccounts();
             }
 
-            
+
             if (!string.IsNullOrWhiteSpace(SearchQuery))
             {
                 SearchQuery = SearchQuery.Trim();
-                customerAccounts1 = customerAccounts1.Where(a => a.FristName.Contains(SearchQuery)
-                || a.LastName.Contains(SearchQuery)|| a.Email.Contains(SearchQuery)|| a.AccountGenerated == SearchQuery);
+                customerAccounts1 = customerAccounts1.Where(a => a.Email.Contains(SearchQuery) || a.AccountGenerated == SearchQuery);
             }
 
             return customerAccounts1.ToList();
@@ -154,13 +120,15 @@ namespace BankingAPIs.Repos
             var accountToBeUpdated = _dbcontext.CustomerAccounts.Where(x => x.Email == customer.Email).FirstOrDefault();
             if (accountToBeUpdated == null) throw new ApplicationException("Account not found");
 
-            if (NewUpdate.Oldpassword != accountToBeUpdated.Password) throw new ApplicationException("Wrong Old password");
+            bool ValidPassword = BCrypt.Net.BCrypt.Verify(NewUpdate.Oldpassword, accountToBeUpdated.Password);
+
+            if (!ValidPassword) throw new ApplicationException("Wrong Old password");
             //so we have a match
 
             if (!string.IsNullOrWhiteSpace(NewUpdate.Email) && NewUpdate.Email != accountToBeUpdated.Email)
             {
                 //throw error because email passeed doesn't matc wiith
-                if (_dbcontext.CustomerAccounts.Any(x => x.Email == NewUpdate.Email)) 
+                if (_dbcontext.CustomerAccounts.Any(x => x.Email == NewUpdate.Email))
                     throw new ApplicationException("Email " + NewUpdate.Email + " has been taken");
                 accountToBeUpdated.Email = NewUpdate.Email;
             }
@@ -172,13 +140,14 @@ namespace BankingAPIs.Repos
                     throw new ApplicationException("PhoneNumber " + NewUpdate.PhoneNumber + " has been taken");
 
                 accountToBeUpdated.PhoneNumber = NewUpdate.PhoneNumber;
-                
+
 
             }
 
-           if (!string.IsNullOrWhiteSpace(NewUpdate.PhoneNumber))
+            if (!string.IsNullOrWhiteSpace(NewUpdate.PhoneNumber))
             {
-                accountToBeUpdated.Password = NewUpdate.Password;
+                accountToBeUpdated.Password = BCrypt.Net.BCrypt.HashPassword(NewUpdate.Password);
+
             }
 
 
@@ -191,6 +160,6 @@ namespace BankingAPIs.Repos
 
         }
 
-        
+
     }
 }
