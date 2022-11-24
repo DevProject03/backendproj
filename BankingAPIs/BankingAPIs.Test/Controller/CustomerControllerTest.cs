@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BankingAPIs.Controllers;
 using BankingAPIs.DATA;
+using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
 using FakeItEasy;
@@ -29,6 +30,7 @@ namespace BankingAPIs.Test.Controller
             _accRepo = A.CollectionOfFake<CustomerAccount>(9);
 
         }
+        
         [Fact]
 
         public void CustomerController_GetUser_ReturnUsers()
@@ -37,17 +39,20 @@ namespace BankingAPIs.Test.Controller
 
             var Controller = new AccountController(_mapper, _CustomerAccount);
 
-            var result = Controller.GetDetails();
+            var result = Controller.GetDetails() as OkObjectResult;
 
+
+            
             Assert.NotNull(result);
             result.Should().BeOfType(typeof(OkObjectResult));
+            Assert.IsType<OkObjectResult>(result as OkObjectResult);
             //result.Should().BeOfType(typeof(CustomerAccount));
             result.Should().NotBeNull();
             //result.Should().BeEquivalentTo(User); 
             //result.StatusCode.Should().Be(200);
 
         }
-
+        [Fact]
         public void CustomerController_GetUserByAcc_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
@@ -57,16 +62,20 @@ namespace BankingAPIs.Test.Controller
 
             var Controller = new AccountController(_mapper, _CustomerAccount);
 
-            var result = Controller.GetAccountByAccountNumber(accnum);
+            var result = Controller.GetAccountByAccountNumber(accnum) as OkObjectResult;
 
-            result.Should().NotBeNull();
-            result.Should().Be(CustomerAccount);
+
             
+            result.Should().NotBeNull();
+            //result.Should().Be(CustomerAccount);
+            Assert.IsType<OkObjectResult>(result);
+            
+
             //Assert.True()
 
 
         }
-
+        [Fact]
         public void CustomerController_GetUserBy_Search_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
@@ -83,7 +92,54 @@ namespace BankingAPIs.Test.Controller
             //var result = Controller.Search();
 
         }
+        [Fact]
+        public void CustomerController_DeleteUserBy_Acc_ReturnNOContent()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
+            string accnum = CustomerAccount.AccountGenerated;
 
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            var result = Controller.DeleteCustomer(accnum);
+
+            Assert.IsType<NoContentResult>(result);
+            result.Should().NotBeNull();
+
+        }
+
+        [Fact]
+        public void CustomerController_updateUser_ReturnUser()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
+            var CustomerDto = A.Fake<AccountDTO>();
+            string accnum = CustomerAccount.AccountGenerated;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            var result = Controller.UpdateCustomer(CustomerDto, accnum);
+
+            Assert.IsType<OkObjectResult>(result);
+            result.Should().NotBeNull();
+
+        }
+
+        [Fact]
+        public void CustomerController_Login_ReturnUser()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
+            string email = CustomerAccount.Email;
+            string pass = CustomerAccount.Password;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            var result = Controller.Login(email, pass) as OkObjectResult;
+
+            Assert.IsType<OkObjectResult>(result);
+
+
+            result.Should().NotBeNull();
+
+        }
        
     }
 }

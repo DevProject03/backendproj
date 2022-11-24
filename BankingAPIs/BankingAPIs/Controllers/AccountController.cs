@@ -28,7 +28,7 @@ namespace BankingAPIs.Controllers
         }
 
         [HttpGet("getAccountById")]
-        public ActionResult GetAccountById(int Id)
+        public IActionResult GetAccountById(int Id)
         {
             var d = _customerAccount.GetAccountById(Id);
 
@@ -41,7 +41,7 @@ namespace BankingAPIs.Controllers
         }
 
         [HttpGet("getAccountByName")]
-        public ActionResult GetAccountByName(string Name)
+        public IActionResult GetAccountByName(string Name)
         {
             var d = _customerAccount.GetAccountByName(Name);
 
@@ -54,7 +54,7 @@ namespace BankingAPIs.Controllers
         }
 
         [HttpGet("getAccountByAccountNumber")]
-        public ActionResult GetAccountByAccountNumber(string AccountNumber)
+        public IActionResult GetAccountByAccountNumber(string AccountNumber)
         {
 
             var d = _customerAccount.GetAccountByAccountNumber(AccountNumber);
@@ -70,7 +70,7 @@ namespace BankingAPIs.Controllers
 
         [HttpGet("getDetails")]
 
-        public ActionResult GetDetails()
+        public IActionResult GetDetails()
         {
             var b = _customerAccount.GetAccounts();
             return Ok(b);
@@ -115,7 +115,7 @@ namespace BankingAPIs.Controllers
 
         [HttpDelete("DeleteCustomer")]
 
-        public ActionResult DeleteCustomer(string AccountNumber)
+        public IActionResult DeleteCustomer(string AccountNumber)
         {
             var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
@@ -130,7 +130,7 @@ namespace BankingAPIs.Controllers
 
         [HttpPost("Login")]
 
-        public ActionResult Login(string Email, string password)
+        public IActionResult Login(string Email, string password)
         {
             var b = _customerAccount.Login(Email, password);
 

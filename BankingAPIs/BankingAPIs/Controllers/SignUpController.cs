@@ -24,7 +24,7 @@ namespace BankingAPIs.Controllers
 
         [HttpPost]
 
-        public ActionResult CreateNewAccount(SignUp signup)
+        public IActionResult CreateNewAccount(SignUp signup)
         {
             
             if ( signup == null)
