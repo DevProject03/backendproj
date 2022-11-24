@@ -13,7 +13,7 @@ namespace BankingAPIs.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        //private DataBank _dbcontext;
+        
         private ICustomerAccount _customerAccount;
 
         private IMapper _mapper;
@@ -21,10 +21,10 @@ namespace BankingAPIs.Controllers
 
         public AccountController(IMapper mapper, ICustomerAccount customerAccount)
         {
-            //_dbcontext = Bankdata;
+            
             _customerAccount = customerAccount;
             mapper = mapper;
-            //_account_repo = account_Repo;
+            
         }
 
         [HttpGet("getAccountById")]
@@ -32,13 +32,10 @@ namespace BankingAPIs.Controllers
         {
             var d = _customerAccount.GetAccountById(Id);
 
-            //var d = _dbcontext.CustomerAccounts.Where(x => x.Id == Id).FirstOrDefault();
-
             if (d == null)
             {
                 return BadRequest("Not Found");
             }
-
 
             return Ok(d);
         }
@@ -48,13 +45,10 @@ namespace BankingAPIs.Controllers
         {
             var d = _customerAccount.GetAccountByName(Name);
 
-            //var d = _dbcontext.CustomerAccounts.Where(x => x.FristName == Name).FirstOrDefault();
-
             if (d == null)
             {
                 return BadRequest("Not Found");
             }
-
 
             return Ok(d);
         }
@@ -64,9 +58,6 @@ namespace BankingAPIs.Controllers
         {
 
             var d = _customerAccount.GetAccountByAccountNumber(AccountNumber);
-
-            // var d = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber)
-            // .FirstOrDefault();
 
             if (d == null)
             {
@@ -81,9 +72,6 @@ namespace BankingAPIs.Controllers
 
         public ActionResult GetDetails()
         {
-
-
-            //return _dbcontext.CustomerAccounts.ToArray();
             var b = _customerAccount.GetAccounts();
             return Ok(b);
 
@@ -93,7 +81,7 @@ namespace BankingAPIs.Controllers
 
         public async Task<ActionResult<IEnumerable<CustomerAccount>>> Search(string SearchQuery)
         {
-            var b = _customerAccount.SearchAccounts(SearchQuery);
+            var b =  _customerAccount.SearchAccounts(SearchQuery);
 
             if (b == null)
             {
@@ -104,21 +92,7 @@ namespace BankingAPIs.Controllers
         }
 
         /*[HttpPost("Create")]
-        public ActionResult Create(CustomerAccount newacc, string Password)
-        {
-            if(string.IsNullOrWhiteSpace(Password))
-                    throw new ArgumentNullException("Password cannot be empty");
-
-            if (_dbcontext.CustomerAccounts.Any(x => x.Email == newacc.Email))
-                throw new ApplicationException("A user with thiss email exists");
-
-            if (_dbcontext.CustomerAccounts.Any(x => x.PhoneNumber == newacc.PhoneNumber))
-                throw new ApplicationException("A user with thiss email exists");
-            //var newCustomer = _account_repo.Create(newaccount, Password, ConfirmPassword);
-
-            //var accnt = _mapper.Map<newaccount>(newCustomer);
-
-            //return Ok(newCustomer);
+      
             /*var newaccounts = new CustomerAccount
             {
                 FristName = newaccount.FristName,
@@ -137,11 +111,6 @@ namespace BankingAPIs.Controllers
 
             };
 
-            _dbcontext.CustomerAccounts.Add(newacc);
-            _dbcontext.SaveChanges();
-
-            //return Ok(_account_repo.Create(newacc, newacc.Password));
-            return Ok();
         }*/
 
         [HttpDelete("DeleteCustomer")]
@@ -154,12 +123,6 @@ namespace BankingAPIs.Controllers
             {
                 return BadRequest("Not Found");
             }
-
-            //_dbcontext.CustomerAccounts.Remove(acc);
-
-            // _customerAccount.;
-
-            // _dbcontext.SaveChanges();
 
             return NoContent();
 
@@ -185,28 +148,18 @@ namespace BankingAPIs.Controllers
         {
             var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
-            //var d = _mapper.Map<AccountDTO>(acc);
-            // accountDto.Email = acc.Email;
-            //accountDto.Password = acc.Password;
-
             AccountDTO accountDTO = new AccountDTO()
             {
                 Email = acc.Email,
                 Password = acc.Password,
-                //DateUpdated = DateTime.Now()
+            
             };
 
-
-            //AccountDTO s = _mapper.Map<CustomerAccount, AccountDTO>(acc);  
 
             if (accountDTO == null)
             {
                 return BadRequest("Not Found");
             }
-
-
-
-            //return Ok(_customerAccount.UpdateCustomer(d));
 
             return Ok(_customerAccount.UpdateCustomer(accountDTO, accountDto));
 
