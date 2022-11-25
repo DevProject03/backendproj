@@ -26,14 +26,6 @@ pipeline{
                 }
             }
         }
-        stage('Unit Test'){
-            steps{
-                script{
-                    sh "cd backendproj && dotnet test BankingAPIs/BankingAPIs.Test"
-                }
-                
-            }
-        }
         stage('SonarQube Analysis') {
             steps {
               withSonarQubeEnv('My SonarQube Server') {
