@@ -25,6 +25,7 @@ pipeline{
                     sh "cd backendproj && dotnet restore BankingAPIs"
                 }
             }
+        }
         stage('Unit Test'){
             steps{
                 script{
