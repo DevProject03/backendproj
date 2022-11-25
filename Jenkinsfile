@@ -35,8 +35,8 @@ pipeline{
             }
         }
         stage('SonarQube Analysis') {
+            def scannerHome = tool 'SonarScanner for MSBuild'
             steps{
-                def scannerHome = tool 'SonarScanner for MSBuild'
                 withSonarQubeEnv() {
                     sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"dotnetapplication\""
                     sh "dotnet build"
