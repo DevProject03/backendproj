@@ -36,7 +36,7 @@ pipeline{
         }
         stage('SonarQube analysis'){
              withSonarQubeEnv('My SonarQube Server'){
-                 sh 'mvn clean package sonar:sonar'
+                 sh "mvn clean package sonar:sonar"
              }
             
         }
@@ -61,7 +61,7 @@ pipeline{
             steps{
                 script{
                     sh "cd backendproj && dotnet publish BankingAPIs"
-                }
+                 }
             }
         }
     
@@ -89,6 +89,6 @@ pipeline{
                 
             }
         }
-        
+    }   
     
 }
