@@ -16,14 +16,14 @@ namespace BankingAPIs.Controllers
         
         private ICustomerAccount _customerAccount;
 
-        private IMapper _mapper;
+       
         private Account_Repo _account_repo;
 
-        public AccountController(IMapper mapper, ICustomerAccount customerAccount)
+        public AccountController(ICustomerAccount customerAccount)
         {
             
             _customerAccount = customerAccount;
-            mapper = mapper;
+            
             
         }
 
@@ -61,7 +61,7 @@ namespace BankingAPIs.Controllers
 
             if (d == null)
             {
-                return BadRequest("Not Found");
+                return NotFound("Not Found");
             }
 
 
@@ -91,41 +91,21 @@ namespace BankingAPIs.Controllers
             return Ok(b);
         }
 
-        /*[HttpPost("Create")]
-      
-            /*var newaccounts = new CustomerAccount
-            {
-                FristName = newaccount.FristName,
-                LastName = newaccount.LastName,
-                Email = newaccount.Email,
-                Password = newaccount.Password,
-                PhoneNumber = newaccount.PhoneNumber,
-                AccountBalance = 0.00,
-                //AccountGenerated = CustomerAccount.AccountGenerated,
-                accountType = newaccount.accountType,
-                DateCreated = DateTime.Now,
-                DateOfBirth = newaccount.DateOfBirth,
-                Gender = newaccount.Gender,
-
-
-
-            };
-
-        }*/
-
+        
         [HttpDelete("DeleteCustomer")]
 
-        public IActionResult DeleteCustomer(string AccountNumber)
+        public ActionResult DeleteCustomer(string AccountNumber)
         {
-            var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
+            CustomerAccount acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
-            if (acc != null)
+            if (acc == null)
             {
-                return NoContent();
                 
+                return NotFound("Not Found");
+
             }
 
-            return NotFound("Not Found");
+            return NoContent();
 
         }
 

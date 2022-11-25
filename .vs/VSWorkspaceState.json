@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BankingAPIs",
+    "\\BankingAPIs\\BankingAPIs",
+    "\\BankingAPIs\\BankingAPIs.Test",
+    "\\BankingAPIs\\BankingAPIs.Test\\Controller",
+    "\\BankingAPIs\\BankingAPIs\\Controllers",
+    "\\BankingAPIs\\BankingAPIs\\ModelClass",
+    "\\BankingAPIs\\BankingAPIs\\Repos"
+  ],
+  "SelectedNode": "\\BankingAPIs\\BankingAPIs.Test\\Controller\\CustomerControllerTest.cs",
+  "PreviewInSolutionExplorer": false
+}
