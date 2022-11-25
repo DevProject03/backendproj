@@ -108,6 +108,22 @@ namespace BankingAPIs.Test.Controller
         }
 
         [Fact]
+        public void Remove_NotExisitinAcc_ReturnsNotFoundResponse()
+        {
+            // Arrange
+            string? notExisting = null;
+
+            var CustomerAccount = A.Fake<CustomerAccount>();
+            string accnum = CustomerAccount.AccountGenerated;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+            // Act
+            var badResponse = Controller.DeleteCustomer(null);
+            // Assert
+            Assert.IsType<NotFoundResult>(badResponse);
+        }
+
+        [Fact]
         public void CustomerController_updateUser_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
@@ -135,6 +151,27 @@ namespace BankingAPIs.Test.Controller
             var result = Controller.Login(email, pass) as OkObjectResult;
 
             Assert.IsType<OkObjectResult>(result);
+
+
+            result.Should().NotBeNull();
+
+        }
+        [Fact]
+        public void CustomerController_WrongLoginDetails()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
+
+            string email = CustomerAccount.Email;
+
+            var user = _accRepo.Where(x => x.Email == email).FirstOrDefault();
+
+            var pass = user.Password;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            var result = Controller.Login(user.Email, pass);
+
+            Assert.IsType<NotFoundResult>(result);
 
 
             result.Should().NotBeNull();

@@ -115,16 +115,17 @@ namespace BankingAPIs.Controllers
 
         [HttpDelete("DeleteCustomer")]
 
-        public IActionResult DeleteCustomer(string AccountNumber)
+        public ActionResult DeleteCustomer(string AccountNumber)
         {
             var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
-            if (acc == null)
+            if (acc != null)
             {
-                return BadRequest("Not Found");
+                return NoContent();
+                
             }
 
-            return NoContent();
+            return NotFound("Not Found");
 
         }
 
@@ -136,7 +137,7 @@ namespace BankingAPIs.Controllers
 
             if (b == null)
             {
-                return BadRequest("Invalid Email or Password");
+                return NotFound("Invalid Email or Password");
             }
 
             return Ok(b);
@@ -158,7 +159,7 @@ namespace BankingAPIs.Controllers
 
             if (accountDTO == null)
             {
-                return BadRequest("Not Found");
+                return NotFound("Not Found");
             }
 
             return Ok(_customerAccount.UpdateCustomer(accountDTO, accountDto));
