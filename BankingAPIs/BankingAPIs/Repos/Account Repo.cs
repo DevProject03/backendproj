@@ -122,12 +122,13 @@ namespace BankingAPIs.Repos
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(NewUpdate.Oldpassword, accountToBeUpdated.Password);
 
+            //throw error because email passeed doesn't matc wiith
             if (!ValidPassword) throw new ApplicationException("Wrong Old password");
             //so we have a match
 
             if (!string.IsNullOrWhiteSpace(NewUpdate.Email) && NewUpdate.Email != accountToBeUpdated.Email)
             {
-                //throw error because email passeed doesn't matc wiith
+                //throw error because email exist in db
                 if (_dbcontext.CustomerAccounts.Any(x => x.Email == NewUpdate.Email))
                     throw new ApplicationException("Email " + NewUpdate.Email + " has been taken");
                 accountToBeUpdated.Email = NewUpdate.Email;
@@ -135,7 +136,7 @@ namespace BankingAPIs.Repos
 
             if (!string.IsNullOrWhiteSpace(NewUpdate.PhoneNumber) && NewUpdate.PhoneNumber != accountToBeUpdated.PhoneNumber)
             {
-                //throw error because email passeed doesn't matc wiith
+                //throw error because Number exist in db
                 if (_dbcontext.CustomerAccounts.Any(x => x.PhoneNumber == NewUpdate.PhoneNumber))
                     throw new ApplicationException("PhoneNumber " + NewUpdate.PhoneNumber + " has been taken");
 

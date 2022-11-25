@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BankingAPIs.Controllers;
 using BankingAPIs.DATA;
+using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
 using FakeItEasy;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,14 +21,17 @@ namespace BankingAPIs.Test.Controller
         //private DataBank _dbcontext;
         private IMapper _mapper;
         private ICustomerAccount _CustomerAccount;
+        private IList<CustomerAccount> _accRepo;
 
         public CustomerControllerTest()
         {
             // _dbcontext = A.Fake<DataBank>();
             _mapper = A.Fake<IMapper>();
             _CustomerAccount = A.Fake<ICustomerAccount>();
+            _accRepo = A.CollectionOfFake<CustomerAccount>(9);
 
         }
+        
         [Fact]
 
         public void CustomerController_GetUser_ReturnUsers()
@@ -35,16 +40,20 @@ namespace BankingAPIs.Test.Controller
 
             var Controller = new AccountController(_mapper, _CustomerAccount);
 
-            var result = Controller.GetDetails();
+            var result = Controller.GetDetails() as OkObjectResult;
 
+
+            
             Assert.NotNull(result);
             result.Should().BeOfType(typeof(OkObjectResult));
+            Assert.IsType<OkObjectResult>(result as OkObjectResult);
             //result.Should().BeOfType(typeof(CustomerAccount));
             result.Should().NotBeNull();
             //result.Should().BeEquivalentTo(User); 
+            //result.StatusCode.Should().Be(200);
 
         }
-
+        [Fact]
         public void CustomerController_GetUserByAcc_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
@@ -54,15 +63,155 @@ namespace BankingAPIs.Test.Controller
 
             var Controller = new AccountController(_mapper, _CustomerAccount);
 
-            var result = Controller.GetAccountByAccountNumber(accnum);
+            var result = Controller.GetAccountByAccountNumber(accnum) as OkObjectResult;
 
+
+            
             result.Should().NotBeNull();
-            result.Should().Be(CustomerAccount);
+            //result.Should().Be(CustomerAccount);
+            Assert.IsType<OkObjectResult>(result);
+            
+
             //Assert.True()
 
 
         }
+        [Fact]
+        public void CustomerController_GetUserBy_Search_ReturnUser()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
 
+            //var SearchQuery = (CustomerAccount.Email);
+
+            var User = A.Fake<ICollection<CustomerAccount>>().ToList();
+
+            var SearchQuery = _accRepo.Where(a => a.Email.Contains(CustomerAccount.Email) 
+            || a.AccountGenerated == CustomerAccount.AccountGenerated);
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            //var result = Controller.Search();
+
+        }
+        [Fact]
+        public void CustomerController_DeleteUserBy_Acc_ReturnNOContent()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
+            string accnum = CustomerAccount.AccountGenerated;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            var result = Controller.DeleteCustomer(accnum);
+
+            Assert.IsType<NoContentResult>(result);
+            result.Should().NotBeNull();
+
+        }
+
+        [Fact]
+        public void Remove_NotExisitinAcc_ReturnsNotFoundResponse()
+        {
+            // Arrange
+            //string? notExisting = null;
+
+            var CustomerAccount = A.Fake<CustomerAccount>();
+
+            var User = new CustomerAccount()
+            {
+                FristName = CustomerAccount.FristName,
+                LastName = CustomerAccount.LastName,
+                Email = CustomerAccount.Email,
+                Password = CustomerAccount.Password,
+                PhoneNumber = CustomerAccount.PhoneNumber,
+                AccountBalance = CustomerAccount.AccountBalance,
+                AccountGenerated = CustomerAccount.AccountGenerated,
+                //accountType = CustomerAccount.AccountType,
+                DateCreated = CustomerAccount.DateCreated,
+                DateOfBirth = CustomerAccount.DateOfBirth,
+                //CustomerAccount.Gender = CustomerAccount.Gender,
+
+            };
+
+            
+            //string accnum = CustomerAccount.AccountGenerated;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+            // Act
+            var badResponse = Controller.DeleteCustomer(User.Email);
+            // Assert
+            Assert.IsType<NotFoundResult>(badResponse);
+        }
+
+        [Fact]
+        public void CustomerController_updateUser_ReturnUser()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
+            var CustomerDto = A.Fake<AccountDTO>();
+            string accnum = CustomerAccount.AccountGenerated;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            var result = Controller.UpdateCustomer(CustomerDto, accnum);
+
+            Assert.IsType<OkObjectResult>(result);
+            result.Should().NotBeNull();
+
+        }
+
+        [Fact]
+        public void CustomerController_Login_ReturnUser()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
+            string email = CustomerAccount.Email;
+            string pass = CustomerAccount.Password;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            var result = Controller.Login(email, pass) as OkObjectResult;
+
+            Assert.IsType<OkObjectResult>(result);
+
+
+            result.Should().NotBeNull();
+
+        }
+        [Fact]
+        public void CustomerController_WrongLoginDetails()
+        {
+            var CustomerAccount = A.Fake<CustomerAccount>();
+
+            var User = new CustomerAccount()
+            {
+                FristName = CustomerAccount.FristName,
+                LastName = CustomerAccount.LastName,
+                Email = CustomerAccount.Email,
+                Password = CustomerAccount.Password,
+                PhoneNumber = CustomerAccount.PhoneNumber,
+                AccountBalance = CustomerAccount.AccountBalance,
+                AccountGenerated = CustomerAccount.AccountGenerated,
+                //accountType = CustomerAccount.AccountType,
+                DateCreated = CustomerAccount.DateCreated,
+                DateOfBirth = CustomerAccount.DateOfBirth,
+                //CustomerAccount.Gender = CustomerAccount.Gender,
+
+            };
+
+            string email = CustomerAccount.Email;
+
+            var user = _accRepo.Where(x => x.Email == email).FirstOrDefault();
+
+            var pass = user.Password;
+
+            var Controller = new AccountController(_mapper, _CustomerAccount);
+
+            var result = Controller.Login(user.Email, User.Password);
+
+            //Assert.IsType<NotFoundResult>(result);
+
+
+            result.Should().BeNull();
+
+        }
        
     }
 }
