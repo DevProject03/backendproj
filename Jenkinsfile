@@ -34,21 +34,13 @@ pipeline{
                 
             }
         }
-        stage('SonarQube analysis'){
-             withSonarQubeEnv('My SonarQube Server'){
-                 sh "mvn clean package sonar:sonar"
-             }
-            
-        }
-        stage('Quality Gate'){
-            timeout(time: 1, unit: 'HOURS'){
-                def qg = waitForQualityGate()
-                if (qg.status != 'OK') {
-                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                }
-                 
+        stage('SonarQube Analysis') {
+            def scannerHome = tool 'SonarScanner for MSBuild'
+            withSonarQubeEnv() {
+                sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll begin /k:\"dotnetapplication\""
+                sh "dotnet build"
+                sh "dotnet ${scannerHome}/SonarScanner.MSBuild.dll end"
             }
-            
         }
         stage('Build'){
             steps{
