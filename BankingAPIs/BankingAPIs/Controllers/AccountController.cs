@@ -115,7 +115,7 @@ namespace BankingAPIs.Controllers
 
         [HttpDelete("DeleteCustomer")]
 
-        public ActionResult DeleteCustomer(string AccountNumber)
+        public IActionResult DeleteCustomer(string AccountNumber)
         {
             var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 

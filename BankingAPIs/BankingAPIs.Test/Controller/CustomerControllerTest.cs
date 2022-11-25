@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -111,14 +112,32 @@ namespace BankingAPIs.Test.Controller
         public void Remove_NotExisitinAcc_ReturnsNotFoundResponse()
         {
             // Arrange
-            string? notExisting = null;
+            //string? notExisting = null;
 
             var CustomerAccount = A.Fake<CustomerAccount>();
-            string accnum = CustomerAccount.AccountGenerated;
+
+            var User = new CustomerAccount()
+            {
+                FristName = CustomerAccount.FristName,
+                LastName = CustomerAccount.LastName,
+                Email = CustomerAccount.Email,
+                Password = CustomerAccount.Password,
+                PhoneNumber = CustomerAccount.PhoneNumber,
+                AccountBalance = CustomerAccount.AccountBalance,
+                AccountGenerated = CustomerAccount.AccountGenerated,
+                //accountType = CustomerAccount.AccountType,
+                DateCreated = CustomerAccount.DateCreated,
+                DateOfBirth = CustomerAccount.DateOfBirth,
+                //CustomerAccount.Gender = CustomerAccount.Gender,
+
+            };
+
+            
+            //string accnum = CustomerAccount.AccountGenerated;
 
             var Controller = new AccountController(_mapper, _CustomerAccount);
             // Act
-            var badResponse = Controller.DeleteCustomer(null);
+            var badResponse = Controller.DeleteCustomer(User.Email);
             // Assert
             Assert.IsType<NotFoundResult>(badResponse);
         }
@@ -161,6 +180,22 @@ namespace BankingAPIs.Test.Controller
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
 
+            var User = new CustomerAccount()
+            {
+                FristName = CustomerAccount.FristName,
+                LastName = CustomerAccount.LastName,
+                Email = CustomerAccount.Email,
+                Password = CustomerAccount.Password,
+                PhoneNumber = CustomerAccount.PhoneNumber,
+                AccountBalance = CustomerAccount.AccountBalance,
+                AccountGenerated = CustomerAccount.AccountGenerated,
+                //accountType = CustomerAccount.AccountType,
+                DateCreated = CustomerAccount.DateCreated,
+                DateOfBirth = CustomerAccount.DateOfBirth,
+                //CustomerAccount.Gender = CustomerAccount.Gender,
+
+            };
+
             string email = CustomerAccount.Email;
 
             var user = _accRepo.Where(x => x.Email == email).FirstOrDefault();
@@ -169,12 +204,12 @@ namespace BankingAPIs.Test.Controller
 
             var Controller = new AccountController(_mapper, _CustomerAccount);
 
-            var result = Controller.Login(user.Email, pass);
+            var result = Controller.Login(user.Email, User.Password);
 
-            Assert.IsType<NotFoundResult>(result);
+            //Assert.IsType<NotFoundResult>(result);
 
 
-            result.Should().NotBeNull();
+            result.Should().BeNull();
 
         }
        

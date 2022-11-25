@@ -25,14 +25,6 @@ pipeline{
                     sh "cd backendproj && dotnet restore BankingAPIs"
                 }
             }
-        }
-        stage('Publish'){
-            steps{
-                script{
-                    sh "cd backendproj && dotnet publish BankingAPIs"
-                }
-            }
-        }
         stage('Unit Test'){
             steps{
                 script{
@@ -41,10 +33,33 @@ pipeline{
                 
             }
         }
+        stage('SonarQube analysis'){
+             withSonarQubeEnv('My SonarQube Server'){
+                 sh 'mvn clean package sonar:sonar'
+             }
+            
+        }
+        stage('Quality Gate'){
+            timeout(time: 1, unit: 'HOURS'){
+                def qg = waitForQualityGate()
+                if (qg.status != 'OK') {
+                    error "Pipeline aborted due to qualituy gate failure: ${qg.status}"
+                }
+                 
+            }
+            
+        }
         stage('Build'){
             steps{
                 script{
                     sh "cd backendproj && dotnet add"
+                }
+            }
+        }
+         stage('Publish'){
+            steps{
+                script{
+                    sh "cd backendproj && dotnet publish BankingAPIs"
                 }
             }
         }
