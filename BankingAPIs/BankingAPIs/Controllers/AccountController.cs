@@ -134,6 +134,5 @@ namespace BankingAPIs.Controllers
             return acc != null ? Ok(_customerAccount.UpdateCustomer(AccountNumber, accountDto)) : NotFound("Not Found");
         }
 
-
     }
 }

@@ -14,8 +14,8 @@ namespace BankingAPIs.Test
 {
     public class FakeRepo : ICustomerAccount
     {
-        private List<CustomerAccount> _shoppingCart;
-        private IMapper _mapper;
+        private readonly List<CustomerAccount> _shoppingCart;
+        private readonly IMapper _mapper;
 
         public FakeRepo(IMapper mapper, List<CustomerAccount> _shoppingCart)
         {
@@ -109,7 +109,7 @@ namespace BankingAPIs.Test
             throw new NotImplementedException();
         }
 
-        public CustomerAccount UpdateCustomer(AccountDTO customer, AccountDTO NewUpdate)
+        public CustomerAccount UpdateCustomer(string AccountNumber, AccountDTO NewUpdate)
         {
             throw new NotImplementedException();
         }

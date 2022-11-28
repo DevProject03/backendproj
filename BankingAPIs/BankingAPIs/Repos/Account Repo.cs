@@ -12,12 +12,12 @@ namespace BankingAPIs.Repos
     public class Account_Repo : ICustomerAccount
     {
         private readonly DataBank _dbcontext;
-        private readonly IMapper _mapper;
+        
 
         public Account_Repo(DataBank Bankdata, IMapper mapper)
         {
             _dbcontext = Bankdata;
-            _mapper = mapper;
+            //_mapper = mapper;
         }
 
        
@@ -31,9 +31,9 @@ namespace BankingAPIs.Repos
             return newacc;
         }
 
-        public void DeleteCustomer(string AccountNumber)
+        public void DeleteCustomer(string AcountNumber)
         {
-            var account = _dbcontext.CustomerAccounts.Find(AccountNumber);
+            var account = _dbcontext.CustomerAccounts.Find(AcountNumber);
             if (account != null)
             {
                 _dbcontext.CustomerAccounts.Remove(account);
@@ -118,20 +118,21 @@ namespace BankingAPIs.Repos
         public CustomerAccount UpdateCustomer(string AccountNumber, AccountDTO NewUpdate)
         {
             var accountToBeUpdated = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber).FirstOrDefault();
-
-            if (accountToBeUpdated == null) throw new ApplicationException("Account not found");
+            //"Account not found"
+            if (accountToBeUpdated == null) throw (new ApplicationException("Account not found"));
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(NewUpdate.Oldpassword, accountToBeUpdated.Password);
 
             //throw error because email passeed doesn't matc wiith
-            if (!ValidPassword) throw new ApplicationException("Wrong Old password");
+            //var message = "Wrong Old password";
+            if (!ValidPassword) throw (new ApplicationException("Wrong Old password"));
             //so we have a match
 
             if (!string.IsNullOrWhiteSpace(NewUpdate.Email) && NewUpdate.Email != accountToBeUpdated.Email)
             {
                 //throw error because email exist in db
                 if (_dbcontext.CustomerAccounts.Any(x => x.Email == NewUpdate.Email))
-                    throw new ApplicationException("Email " + NewUpdate.Email + " has been taken");
+                    throw (new ApplicationException("Email " + NewUpdate.Email + " has been taken"));
                 accountToBeUpdated.Email = NewUpdate.Email;
             }
 
@@ -139,7 +140,7 @@ namespace BankingAPIs.Repos
             {
                 //throw error because Number exist in db
                 if (_dbcontext.CustomerAccounts.Any(x => x.PhoneNumber == NewUpdate.PhoneNumber))
-                    throw new ApplicationException("PhoneNumber " + NewUpdate.PhoneNumber + " has been taken");
+                    throw (new ApplicationException("PhoneNumber " + NewUpdate.PhoneNumber + " has been taken"));
 
                 accountToBeUpdated.PhoneNumber = NewUpdate.PhoneNumber;
 
