@@ -11,14 +11,12 @@ namespace BankingAPIs.Controllers
     [ApiController]
     public class SignUpController : ControllerBase
     {
-        //private DataBank _dbcontext;
-        private IMapper _mapper;
+        
         private ISignUp _signup;
-        Random rand = new Random();
 
-        public SignUpController(IMapper mapper, ISignUp signUp)
+        public SignUpController(ISignUp signUp)
         {
-            _mapper = mapper;
+           
             _signup = signUp;
         }
 

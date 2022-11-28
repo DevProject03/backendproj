@@ -37,7 +37,7 @@ namespace BankingAPIs.Test.Controller
             A.CallTo(() => _signup.Create(signupacc, signupacc.Password,
                 signupacc.ConfirmPassword)).Returns(new SignUp());
             
-            var controller = new SignUpController(_mapper, _signup);
+            var controller = new SignUpController( _signup);
 
 
             

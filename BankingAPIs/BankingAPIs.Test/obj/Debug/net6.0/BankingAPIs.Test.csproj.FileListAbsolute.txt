@@ -578,3 +578,7 @@ C:\Users\jlopez\Source\Repos\backendproj\BankingAPIs\BankingAPIs.Test\obj\Debug\
 C:\Users\jlopez\Source\Repos\backendproj\BankingAPIs\BankingAPIs.Test\obj\Debug\net6.0\BankingAPIs.Test.pdb
 C:\Users\jlopez\Source\Repos\backendproj\BankingAPIs\BankingAPIs.Test\obj\Debug\net6.0\BankingAPIs.Test.genruntimeconfig.cache
 C:\Users\jlopez\Source\Repos\backendproj\BankingAPIs\BankingAPIs.Test\obj\Debug\net6.0\ref\BankingAPIs.Test.dll
+C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\System.Web.Http.dll
+C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\System.Web.Http.SelfHost.dll
+C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
