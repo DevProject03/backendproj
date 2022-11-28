@@ -13,7 +13,7 @@ namespace BankingAPIs.Repos
     {
         private DataBank _dbcontext;
         private IMapper _mapper;
-        Random rand = new Random();
+        
 
         public Signup(DataBank dataBank, IMapper mapper )
         {
@@ -42,12 +42,9 @@ namespace BankingAPIs.Repos
 
             var d = _mapper.Map<CustomerAccount>(newaccount);
 
-            var a = "029";
+            var accountNumber = new AccountNumber();
 
-            var b = Convert.ToString((long)Math.Floor(rand.NextDouble()
-                * 9_000_000L + 1_000_000L));
-
-            d.AccountGenerated = Convert.ToString(a + b);
+            d.AccountGenerated = accountNumber.AccountGenerated;
 
             d.DateCreated = DateTime.Now;
             d.DateUpdated = DateTime.Now;
