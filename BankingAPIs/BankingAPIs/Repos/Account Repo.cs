@@ -115,9 +115,10 @@ namespace BankingAPIs.Repos
             return user;
         }
 
-        public CustomerAccount UpdateCustomer(AccountDTO customer, AccountDTO NewUpdate)
+        public CustomerAccount UpdateCustomer(string AccountNumber, AccountDTO NewUpdate)
         {
-            var accountToBeUpdated = _dbcontext.CustomerAccounts.Where(x => x.Email == customer.Email).FirstOrDefault();
+            var accountToBeUpdated = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber).FirstOrDefault();
+
             if (accountToBeUpdated == null) throw new ApplicationException("Account not found");
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(NewUpdate.Oldpassword, accountToBeUpdated.Password);

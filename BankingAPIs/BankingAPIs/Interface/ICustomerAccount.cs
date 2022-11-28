@@ -13,7 +13,7 @@ namespace BankingAPIs.Interface
         IEnumerable<CustomerAccount> GetAccounts();
 
         IEnumerable<CustomerAccount> SearchAccounts(string SearchQuery);
-        CustomerAccount UpdateCustomer(AccountDTO customer, AccountDTO NewUpdate);
+        CustomerAccount UpdateCustomer(string AccountNumber, AccountDTO NewUpdate);
         CustomerAccount Login(string Email, string password);
         void DeleteCustomer(string AcountNumber);
         //CustomerAccount Create(CustomerAccount customerAccount, string Password);    

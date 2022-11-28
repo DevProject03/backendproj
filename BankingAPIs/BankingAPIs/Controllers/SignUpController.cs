@@ -12,7 +12,7 @@ namespace BankingAPIs.Controllers
     public class SignUpController : ControllerBase
     {
         
-        private ISignUp _signup;
+        private readonly ISignUp _signup;
 
         public SignUpController(ISignUp signUp)
         {

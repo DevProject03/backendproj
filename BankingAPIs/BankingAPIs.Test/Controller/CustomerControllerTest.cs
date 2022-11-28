@@ -119,7 +119,7 @@ namespace BankingAPIs.Test.Controller
             // Arrange
           
 
-            string acc = null;
+            string? acc = null;
 
             //var Controller = new AccountController(_CustomerAccount);
 
@@ -129,8 +129,8 @@ namespace BankingAPIs.Test.Controller
             A.CallTo(() => _CustomerAccount.GetAccountByAccountNumber(acc)).Returns(null);
             A.CallTo(() => _CustomerAccount.DeleteCustomer(acc)).Equals(null);
 
-           // var result = Controller.GetAccountByAccountNumber(acc) as NotFoundObjectResult;
-           var result = Controller.DeleteCustomer(acc) as NotFoundObjectResult;
+            // var result = Controller.GetAccountByAccountNumber(acc) as NotFoundObjectResult;
+            NotFoundObjectResult? result = Controller.DeleteCustomer(acc) as NotFoundObjectResult;
             // Assert
             Assert.IsType<NotFoundObjectResult>(result);
             //result.Should().Be;

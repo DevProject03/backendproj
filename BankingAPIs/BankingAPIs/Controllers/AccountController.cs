@@ -14,10 +14,10 @@ namespace BankingAPIs.Controllers
     public class AccountController : ControllerBase
     {
         
-        private ICustomerAccount _customerAccount;
+        private readonly ICustomerAccount _customerAccount;
 
        
-        private Account_Repo _account_repo;
+       
 
         public AccountController(ICustomerAccount customerAccount)
         {
@@ -129,21 +129,9 @@ namespace BankingAPIs.Controllers
         {
             var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
-            AccountDTO accountDTO = new AccountDTO()
-            {
-                Email = acc.Email,
-                Password = acc.Password,
-            
-            };
-
-
-            if (accountDTO == null)
-            {
-                return NotFound("Not Found");
-            }
-
-            return Ok(_customerAccount.UpdateCustomer(accountDTO, accountDto));
-
+            //AccountDTO accountDTO = new AccountDTO();
+           
+            return acc != null ? Ok(_customerAccount.UpdateCustomer(AccountNumber, accountDto)) : NotFound("Not Found");
         }
 
 
