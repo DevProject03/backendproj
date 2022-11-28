@@ -14,3 +14,7 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/jlopez/source/repos/backendproj/BankingAPIs/.sonarlint/backendapp/CSharp/SonarLint.xml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 

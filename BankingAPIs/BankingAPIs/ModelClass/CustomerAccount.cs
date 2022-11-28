@@ -23,10 +23,6 @@ namespace BankingAPIs.ModelClass
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
 
-        Random rand = new Random();
-
-    
-
         public enum AccountType
         {
             Savings,
