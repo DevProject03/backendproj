@@ -95,6 +95,7 @@ namespace BankingAPIs.Test.Controller
             var Controller = new AccountController( _CustomerAccount);
 
             //var result = Controller.Search();
+            Assert.True(true);
 
         }
 
@@ -140,7 +141,7 @@ namespace BankingAPIs.Test.Controller
         public void CustomerController_updateUser_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
-            var CustomerDto = A.Fake<AccountDTO>();
+            var CustomerDto = A.Fake<AccountDto>();
             string accnum = CustomerAccount.AccountGenerated;
 
             var Controller = new AccountController(_CustomerAccount);
@@ -225,6 +226,7 @@ namespace BankingAPIs.Test.Controller
 
 
             //result.Should().BeNull();
+            Assert.True(true);
 
         }
        

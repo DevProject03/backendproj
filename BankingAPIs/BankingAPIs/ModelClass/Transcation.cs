@@ -25,7 +25,7 @@ namespace BankingAPIs.ModelClass
 
         public Transcation()
         {
-            var TranscationId = $"{Guid.NewGuid().ToString().Replace("-", "").Substring(1, 12)}";
+           
 
         }
     }

@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped <ISignUp, Signup>();
-builder.Services.AddScoped<ICustomerAccount, Account_Repo>();
+builder.Services.AddScoped<ICustomerAccount, AccountRepo>();
 var connectionString = builder.Configuration.GetConnectionString(name: "DefaultConnections");
 
 builder.Services.AddControllers();
@@ -23,9 +23,6 @@ builder.Services.AddDbContext<DataBank>(opt =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddDbContext<DataContext>(opt =>
-     //  opt.UseInMemoryDatabase("BankData"));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

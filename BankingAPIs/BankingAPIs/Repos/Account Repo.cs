@@ -3,18 +3,19 @@ using BankingAPIs.DATA;
 using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Principal;
 using System.Xml.Linq;
 
 namespace BankingAPIs.Repos
 {
-    public class Account_Repo : ICustomerAccount
+    public class AccountRepo : ICustomerAccount
     {
         private readonly DataBank _dbcontext;
         
 
-        public Account_Repo(DataBank Bankdata, IMapper mapper)
+        public AccountRepo(DataBank Bankdata, IMapper mapper)
         {
             _dbcontext = Bankdata;
             //_mapper = mapper;
@@ -45,12 +46,21 @@ namespace BankingAPIs.Repos
         public CustomerAccount GetAccount(string Name)
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.LastName == Name).FirstOrDefault();
+
+            if (account == null)
+            {
+                return null;
+            }
             return account;
         }
 
         public CustomerAccount GetAccountByAccountNumber(string AccountNumber)
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber).FirstOrDefault();
+            if (account == null)
+            {
+                return null;
+            }
             return account;
         }
 
@@ -59,12 +69,20 @@ namespace BankingAPIs.Repos
         public CustomerAccount GetAccountById(int Id)
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.Id == Id).FirstOrDefault();
+            if (account == null)
+            {
+               return null;
+            }
             return account;
         }
 
         public CustomerAccount GetAccountByName(string Name)
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.FristName == Name).FirstOrDefault();
+            if (account == null)
+            {
+                return null;
+            }
             return account;
         }
 
@@ -101,7 +119,7 @@ namespace BankingAPIs.Repos
 
             if (user == null)
             {
-                return null;
+                throw (new ApplicationException("Account not found"));
             }
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(password, user.Password);
@@ -115,16 +133,16 @@ namespace BankingAPIs.Repos
             return user;
         }
 
-        public CustomerAccount UpdateCustomer(string AccountNumber, AccountDTO NewUpdate)
+        public CustomerAccount UpdateCustomer(string AccountNumber, AccountDto NewUpdate)
         {
             var accountToBeUpdated = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber).FirstOrDefault();
-            //"Account not found"
+           
             if (accountToBeUpdated == null) throw (new ApplicationException("Account not found"));
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(NewUpdate.Oldpassword, accountToBeUpdated.Password);
 
             //throw error because email passeed doesn't matc wiith
-            //var message = "Wrong Old password";
+            
             if (!ValidPassword) throw (new ApplicationException("Wrong Old password"));
             //so we have a match
 

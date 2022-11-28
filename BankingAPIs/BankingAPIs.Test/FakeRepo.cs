@@ -109,7 +109,7 @@ namespace BankingAPIs.Test
             throw new NotImplementedException();
         }
 
-        public CustomerAccount UpdateCustomer(string AccountNumber, AccountDTO NewUpdate)
+        public CustomerAccount UpdateCustomer(string AccountNumber, AccountDto NewUpdate)
         {
             throw new NotImplementedException();
         }

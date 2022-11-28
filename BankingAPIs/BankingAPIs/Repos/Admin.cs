@@ -8,14 +8,13 @@ namespace BankingAPIs.Repos
 {
     public class Admin : IAdminLogin
     {
-        private DataBank _dbcontext;
-        private IMapper _mapper;
+        private readonly DataBank _dbcontext;
+        
 
-        public Admin(DataBank Bankdata, IMapper mapper)
+        public Admin(DataBank Bankdata)
         {
             _dbcontext = Bankdata;
-            _mapper = mapper;
-
+            
         }
       
 
@@ -30,15 +29,13 @@ namespace BankingAPIs.Repos
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(password, user.Password);
 
-            if (!ValidPassword)
+            if (ValidPassword)
             {
-                return null;
+                return user;
             }
-
-
-            return user;
+            return null;
         }
 
-       
+
     }
 }
