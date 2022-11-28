@@ -1,53 +1,44 @@
-﻿using BankingAPIs.Interface;
+﻿using AutoMapper;
+using BankingAPIs.DATA;
+using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankingAPIs.Repos
 {
     public class Admin : IAdminLogin
     {
-        public CustomerAccount Create(CustomerAccount customerAccount, string Password)
-        {
-            throw new NotImplementedException();
-        }
+        private DataBank _dbcontext;
+        private IMapper _mapper;
 
-        public void DeleteCustomer(CustomerAccount customer)
+        public Admin(DataBank Bankdata, IMapper mapper)
         {
-            throw new NotImplementedException();
-        }
+            _dbcontext = Bankdata;
+            _mapper = mapper;
 
-        public CustomerAccount GetAccountByAccountNumber(string AccountNumber)
-        {
-            throw new NotImplementedException();
         }
-
-        public CustomerAccount GetAccountById(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CustomerAccount GetAccountByName(string Name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICollection<CustomerAccount> GetAccounts()
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public AdminLogin Login(string Email, string password)
         {
-            throw new NotImplementedException();
+            var user = _dbcontext.AdminLogins.Where(x => x.Email == Email).FirstOrDefault();
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            bool ValidPassword = BCrypt.Net.BCrypt.Verify(password, user.Password);
+
+            if (!ValidPassword)
+            {
+                return null;
+            }
+
+
+            return user;
         }
 
-        public CustomerAccount Search(string query)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateCustomer(CustomerAccount customer)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
