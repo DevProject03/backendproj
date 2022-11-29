@@ -27,9 +27,9 @@ namespace BankingAPIs.Repos
                 return null;
             }
 
-            bool ValidPassword = BCrypt.Net.BCrypt.Verify(password, user.Password);
+            //bool ValidPassword = BCrypt.Net.BCrypt.Verify(password, user.Password);
 
-            if (ValidPassword)
+            if (user.Password == password)
             {
                 return user;
             }

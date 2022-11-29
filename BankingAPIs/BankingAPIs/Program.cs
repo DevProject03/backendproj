@@ -13,6 +13,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped <ISignUp, Signup>();
 builder.Services.AddScoped<ICustomerAccount, AccountRepo>();
+builder.Services.AddScoped <IAdminLogin, Admin>();
 var connectionString = builder.Configuration.GetConnectionString(name: "DefaultConnections");
 //var cc = builder.Configuration.GetSection("DefaultConnections");
 var b = Environment.GetEnvironmentVariable("DefaultConnections");
