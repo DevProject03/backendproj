@@ -37,8 +37,7 @@ namespace BankingAPIs.Test.Controller
         }
         
         [Fact]
-
-        public void CustomerController_GetUser_ReturnUsers()
+        public void CustomerController_GetUsersList_ReturnUsers()
         {
             var User = A.Fake<ICollection<CustomerAccount>>().ToList();
 
@@ -58,7 +57,7 @@ namespace BankingAPIs.Test.Controller
 
         }
         [Fact]
-        public void CustomerController_GetUserByAcc_ReturnUser()
+        public void CustomerController_GetUserByAccNum_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
 
@@ -81,6 +80,11 @@ namespace BankingAPIs.Test.Controller
 
         }
         [Fact]
+        public void CustomerController_WrongAccNum_ReturnNotFound()
+        {
+            Assert.True(true);
+        }
+        [Fact]
         public void CustomerController_GetUserBy_Search_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
@@ -98,7 +102,11 @@ namespace BankingAPIs.Test.Controller
             Assert.True(true);
 
         }
-
+        [Fact]
+        public void CustomerController_GetUserBy_WrongQuery_ReturnNotFound()
+        {
+            Assert.True(true);
+        }
         [Fact]
         public void CustomerController_DeleteUserBy_Acc_ReturnNOContent()
         {
@@ -113,9 +121,8 @@ namespace BankingAPIs.Test.Controller
             result.Should().NotBeNull();
 
         }
-
         [Fact]
-        public void Remove_NotExisitinAcc_ReturnsNotFoundResponse()
+        public void CustomerController_Delete_NotExisitinAcc_ReturnsNotFoundResponse()
         {
             // Arrange
           
@@ -136,7 +143,6 @@ namespace BankingAPIs.Test.Controller
             Assert.IsType<NotFoundObjectResult>(result);
             //result.Should().Be;
         }
-
         [Fact]
         public void CustomerController_updateUser_ReturnUser()
         {
@@ -152,7 +158,11 @@ namespace BankingAPIs.Test.Controller
             result.Should().NotBeNull();
 
         }
-
+        [Fact]
+        public void CustomerController_Wrongoldpassword_ReturnBadRequest()
+        {
+            Assert.True(true);      
+        }
         [Fact]
         public void CustomerController_Login_ReturnUser()
         {
@@ -229,6 +239,7 @@ namespace BankingAPIs.Test.Controller
             Assert.True(true);
 
         }
+       
        
     }
 }

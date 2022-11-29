@@ -1,7 +1,7 @@
 ﻿namespace BankingAPIs
 {
-    public class ConnectionString
+    public class ConnectionStrings
     {
-        public string DefaultConnection { get; set; }
+        public string DefaultConnections { get; set; }
     }
 }

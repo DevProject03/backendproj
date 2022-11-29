@@ -16,8 +16,8 @@ namespace BankingAPIs.Test.Controller
 {
     public class SignupControllerTest
     {
-        private IMapper _mapper;
-        private ISignUp _signup;
+        private readonly IMapper _mapper;
+        private readonly ISignUp _signup;
 
         public SignupControllerTest()
         {
@@ -38,14 +38,10 @@ namespace BankingAPIs.Test.Controller
                 signupacc.ConfirmPassword)).Returns(new SignUp());
             
             var controller = new SignUpController( _signup);
-
-
-            
+           
             //Act
 
             var result = controller.CreateNewAccount(signupacc);
-
-            
 
             //Assert
 

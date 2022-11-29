@@ -6,7 +6,7 @@ namespace BankingAPIs.Interface
 {
     public interface ICustomerAccount
     {
-         CustomerAccount Create(CustomerAccount newacc, string Password);
+        CustomerAccount Create(CustomerAccount newacc, string Password);
         IEnumerable<CustomerAccount> GetAccounts();
 
         IEnumerable<CustomerAccount> SearchAccounts(string SearchQuery);
