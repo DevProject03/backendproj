@@ -19,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<DataBank>(opt =>
 {
     opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+    //opt.UseMySql(Environment.GetEnvironmentVariable("Connectionstring"))
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BankingAPIs.Migrations
 {
-    public partial class NewMigration : Migration
+    public partial class FristSatte : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,6 +38,8 @@ namespace BankingAPIs.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AccountGenerated = table.Column<string>(type: "varchar(255)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     FristName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastName = table.Column<string>(type: "longtext", nullable: false)
@@ -51,15 +53,13 @@ namespace BankingAPIs.Migrations
                     AccountBalance = table.Column<double>(type: "double", nullable: false),
                     Password = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AccountGenerated = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     accountType = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     DateUpdated = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerAccounts", x => x.Id);
+                    table.PrimaryKey("PK_CustomerAccounts", x => new { x.Id, x.AccountGenerated });
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 

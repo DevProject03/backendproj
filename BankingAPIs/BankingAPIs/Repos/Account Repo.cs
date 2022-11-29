@@ -18,7 +18,7 @@ namespace BankingAPIs.Repos
         public AccountRepo(DataBank Bankdata, IMapper mapper)
         {
             _dbcontext = Bankdata;
-            //_mapper = mapper;
+           
         }
 
        
@@ -47,11 +47,11 @@ namespace BankingAPIs.Repos
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.LastName == Name).FirstOrDefault();
 
-            if (account == null)
+            if (account != null)
             {
-                return null;
+                return account;
             }
-            return account;
+            return null;
         }
 
         public CustomerAccount GetAccountByAccountNumber(string AccountNumber)

@@ -23,14 +23,14 @@ namespace BankingAPIs.ModelClass
 
         public enum AccountType
         {
-            Savings,
-            Current
+            Savings=1,
+            Current=2
         }
 
         public enum Gender
         {
-            Male,
-            Female
+            Male=1,
+            Female=2
         }
     }
 }

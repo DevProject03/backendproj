@@ -25,10 +25,6 @@ namespace BankingAPIs.Controllers
         public IActionResult CreateNewAccount(SignUp signup)
         {
             
-            if ( signup == null)
-            {
-                return BadRequest("Not Found");
-            }
             return Ok(_signup.Create(signup, signup.Password, signup.ConfirmPassword));
 
         }
