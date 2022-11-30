@@ -8,13 +8,12 @@ namespace BankingAPIs.Helper
     {
         public MappingProfile()
         {
-            CreateMap<CustomerAccount, AccountDTO >();
+            CreateMap<CustomerAccount, AccountDto >();
 
-            CreateMap<AccountDTO, CustomerAccount>();
+            CreateMap<AccountDto, CustomerAccount>();
 
             CreateMap<SignUp, CustomerAccount>();
 
-            //CreateMap<CustomerAccount, SignUp>();
         }
     }
 }

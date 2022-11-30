@@ -2,7 +2,7 @@
 {
     public class AccountNumber
     {
-        Random rand = new Random();
+        readonly Random rand = new Random();
         public AccountNumber()
         {
             var a = "029";

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAPIs.Migrations
 {
     [DbContext(typeof(DataBank))]
-    [Migration("20221123113427_again")]
-    partial class again
+    [Migration("20221129213036_thirdone")]
+    partial class thirdone
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

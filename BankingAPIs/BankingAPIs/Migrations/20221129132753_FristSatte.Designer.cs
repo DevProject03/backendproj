@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAPIs.Migrations
 {
     [DbContext(typeof(DataBank))]
-    [Migration("20221123111136_2nd")]
-    partial class _2nd
+    [Migration("20221129132753_FristSatte")]
+    partial class FristSatte
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,7 @@ namespace BankingAPIs.Migrations
             modelBuilder.Entity("BankingAPIs.ModelClass.CustomerAccount", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("AccountGenerated")

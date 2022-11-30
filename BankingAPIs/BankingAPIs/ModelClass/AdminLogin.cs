@@ -4,6 +4,7 @@ namespace BankingAPIs.ModelClass
 {
     public class AdminLogin
     {
+
         [Key]
         public int BankId { get; set; }
 

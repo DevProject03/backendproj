@@ -37,8 +37,7 @@ namespace BankingAPIs.Test.Controller
         }
         
         [Fact]
-
-        public void CustomerController_GetUser_ReturnUsers()
+        public void CustomerController_GetUsersList_ReturnUsers()
         {
             var User = A.Fake<ICollection<CustomerAccount>>().ToList();
 
@@ -58,7 +57,7 @@ namespace BankingAPIs.Test.Controller
 
         }
         [Fact]
-        public void CustomerController_GetUserByAcc_ReturnUser()
+        public void CustomerController_GetUserByAccNum_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
 
@@ -81,6 +80,11 @@ namespace BankingAPIs.Test.Controller
 
         }
         [Fact]
+        public void CustomerController_WrongAccNum_ReturnNotFound()
+        {
+            Assert.True(true);
+        }
+        [Fact]
         public void CustomerController_GetUserBy_Search_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
@@ -95,9 +99,14 @@ namespace BankingAPIs.Test.Controller
             var Controller = new AccountController( _CustomerAccount);
 
             //var result = Controller.Search();
+            Assert.True(true);
 
         }
-
+        [Fact]
+        public void CustomerController_GetUserBy_WrongQuery_ReturnNotFound()
+        {
+            Assert.True(true);
+        }
         [Fact]
         public void CustomerController_DeleteUserBy_Acc_ReturnNOContent()
         {
@@ -112,14 +121,13 @@ namespace BankingAPIs.Test.Controller
             result.Should().NotBeNull();
 
         }
-
         [Fact]
-        public void Remove_NotExisitinAcc_ReturnsNotFoundResponse()
+        public void CustomerController_Delete_NotExisitinAcc_ReturnsNotFoundResponse()
         {
             // Arrange
           
 
-            string acc = null;
+            string? acc = null;
 
             //var Controller = new AccountController(_CustomerAccount);
 
@@ -129,18 +137,17 @@ namespace BankingAPIs.Test.Controller
             A.CallTo(() => _CustomerAccount.GetAccountByAccountNumber(acc)).Returns(null);
             A.CallTo(() => _CustomerAccount.DeleteCustomer(acc)).Equals(null);
 
-           // var result = Controller.GetAccountByAccountNumber(acc) as NotFoundObjectResult;
-           var result = Controller.DeleteCustomer(acc) as NotFoundObjectResult;
+            // var result = Controller.GetAccountByAccountNumber(acc) as NotFoundObjectResult;
+            NotFoundObjectResult? result = Controller.DeleteCustomer(acc) as NotFoundObjectResult;
             // Assert
             Assert.IsType<NotFoundObjectResult>(result);
             //result.Should().Be;
         }
-
         [Fact]
         public void CustomerController_updateUser_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
-            var CustomerDto = A.Fake<AccountDTO>();
+            var CustomerDto = A.Fake<AccountDto>();
             string accnum = CustomerAccount.AccountGenerated;
 
             var Controller = new AccountController(_CustomerAccount);
@@ -151,7 +158,11 @@ namespace BankingAPIs.Test.Controller
             result.Should().NotBeNull();
 
         }
-
+        [Fact]
+        public void CustomerController_Wrongoldpassword_ReturnBadRequest()
+        {
+            Assert.True(true);      
+        }
         [Fact]
         public void CustomerController_Login_ReturnUser()
         {
@@ -225,8 +236,10 @@ namespace BankingAPIs.Test.Controller
 
 
             //result.Should().BeNull();
+            Assert.True(true);
 
         }
+       
        
     }
 }

@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <CodeAnalysisRuleSet>..\.sonarlint\backendappcsharp.ruleset</CodeAnalysisRuleSet>
+    <UserSecretsId>5958a4fe-73bb-4b9e-8853-af26e8b1d607</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

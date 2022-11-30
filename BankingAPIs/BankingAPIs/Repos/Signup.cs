@@ -11,8 +11,8 @@ namespace BankingAPIs.Repos
 {
     public class Signup : ISignUp
     {
-        private DataBank _dbcontext;
-        private IMapper _mapper;
+        private readonly DataBank _dbcontext;
+        private readonly IMapper _mapper;
         
 
         public Signup(DataBank dataBank, IMapper mapper )
@@ -29,10 +29,10 @@ namespace BankingAPIs.Repos
                 throw new ArgumentNullException("Password cannot be empty");
 
             if (_dbcontext.CustomerAccounts.Any(x => x.Email == newaccount.Email))
-                throw new ApplicationException("A user with this email exists");
+                throw (new ApplicationException("A user with this email exists"));
 
             if (_dbcontext.CustomerAccounts.Any(x => x.PhoneNumber == newaccount.phoneNumber))
-                throw new ApplicationException("A user with this phoneNumber exists");
+                throw (new ApplicationException("A user with this phoneNumber exists"));
 
             newaccount.Password = BCrypt.Net.BCrypt.HashPassword(newaccount.Password);
 
@@ -53,7 +53,7 @@ namespace BankingAPIs.Repos
 
             _dbcontext.SaveChanges();
 
-            ///return (CustomerAccount)newaccount;
+           
             return newaccount;
         }
     }

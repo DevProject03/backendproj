@@ -7,7 +7,7 @@ namespace BankingAPIs.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private IAdminLogin _adminlogin;
+        private readonly IAdminLogin _adminlogin;
 
         public AdminController(IAdminLogin adminLogin)
         {

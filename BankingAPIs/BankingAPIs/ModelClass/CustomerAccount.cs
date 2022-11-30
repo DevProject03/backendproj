@@ -16,8 +16,6 @@ namespace BankingAPIs.ModelClass
         public string Email { get; set; }
         public double AccountBalance { get; set; }
         public string Password { get; set; }
-        //public string ConfrimPassword { get; set; }
-        //[Key]
         public string AccountGenerated { get; set; }
         public AccountType accountType { get; set; }
         public DateTime DateCreated { get; set; }
@@ -25,14 +23,14 @@ namespace BankingAPIs.ModelClass
 
         public enum AccountType
         {
-            Savings,
-            Current
+            Savings=1,
+            Current=2
         }
 
         public enum Gender
         {
-            Male,
-            Female
+            Male=1,
+            Female=2
         }
     }
 }

@@ -14,10 +14,10 @@ namespace BankingAPIs.Controllers
     public class AccountController : ControllerBase
     {
         
-        private ICustomerAccount _customerAccount;
+        private readonly ICustomerAccount _customerAccount;
 
        
-        private Account_Repo _account_repo;
+       
 
         public AccountController(ICustomerAccount customerAccount)
         {
@@ -79,7 +79,7 @@ namespace BankingAPIs.Controllers
 
         [HttpGet("Search")]
 
-        public async Task<ActionResult<IEnumerable<CustomerAccount>>> Search(string SearchQuery)
+        public ActionResult<IEnumerable<CustomerAccount>> Search(string SearchQuery)
         {
             var b =  _customerAccount.SearchAccounts(SearchQuery);
 
@@ -125,27 +125,12 @@ namespace BankingAPIs.Controllers
 
 
         [HttpPut("UpdateCustomer")]
-        public IActionResult UpdateCustomer(AccountDTO accountDto, string AccountNumber)
+        public IActionResult UpdateCustomer(AccountDto accountDto, string AccountNumber)
         {
             var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
-
-            AccountDTO accountDTO = new AccountDTO()
-            {
-                Email = acc.Email,
-                Password = acc.Password,
-            
-            };
-
-
-            if (accountDTO == null)
-            {
-                return NotFound("Not Found");
-            }
-
-            return Ok(_customerAccount.UpdateCustomer(accountDTO, accountDto));
-
+           
+            return acc != null ? Ok(_customerAccount.UpdateCustomer(AccountNumber, accountDto)) : NotFound("Not Found");
         }
-
 
     }
 }
