@@ -1,0 +1,3 @@
+- hosts: localhost 
+  gather-facts: false
+  tasks:

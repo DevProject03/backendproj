@@ -25,34 +25,31 @@ pipeline{
                     sh "cd backendproj && dotnet restore BankingAPIs"
                 }
             }
-        stage('Unit Test'){
+        }
+        
+        stage('SonarQube analysis') {
+           
             steps{
-                script{
-                    sh "cd backendproj && dotnet test BankingAPIs/BankingAPIs.Test"
-                }
-                
-            }
-        }
-        stage('SonarQube analysis'){
-             withSonarQubeEnv('My SonarQube Server'){
-                 sh 'mvn clean package sonar:sonar'
+//                  def sqScannerMsBuildHome = tool 'SonarScanner'
+                 withSonarQubeEnv('sonarqube-9.7.1') {
+                    bat "dotnet-sonarscanner begin k:backendapp d:sonar.host.url=https://72e8-41-58-130-138.eu.ngrok.io d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
+                    bat "dotnet build"
+                    bat "dotnet sonarscanner end d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4
+//                 script{
+//                    sh "cd backendproj/BankingAPIs && dotnet tool install --global dotnet-sonarscanner --version 5.8.0"
+//                    sh "cd backendproj/BankingAPIs && dotnet-sonarscanner begin k:backendapp d:sonar.host.url=https://72e8-41-58-130-138.eu.ngrok.io d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
+//                    sh "cd backendproj/BankingAPIs && dotnet build"
+//                    sh "cd backendproj/BankingAPIs && dotnet sonarscanner end d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
+//                 } 
+                 }
              }
-            
+                
         }
-        stage('Quality Gate'){
-            timeout(time: 1, unit: 'HOURS'){
-                def qg = waitForQualityGate()
-                if (qg.status != 'OK') {
-                    error "Pipeline aborted due to qualituy gate failure: ${qg.status}"
-                }
-                 
-            }
-            
-        }
+
         stage('Build'){
             steps{
                 script{
-                    sh "cd backendproj && dotnet add"
+                    sh "cd backendproj && dotnet build BankingAPIs"
                 }
             }
         }
@@ -60,7 +57,7 @@ pipeline{
             steps{
                 script{
                     sh "cd backendproj && dotnet publish BankingAPIs"
-                }
+                 }
             }
         }
     
@@ -88,6 +85,6 @@ pipeline{
                 
             }
         }
-        
-    }
+    }   
+    
 }
