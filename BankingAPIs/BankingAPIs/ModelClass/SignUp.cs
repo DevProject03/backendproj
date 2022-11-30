@@ -13,8 +13,8 @@ namespace BankingAPIs.ModelClass
          
         public DateTime CreatedDate { get; }
         //[RegularExpression(@"^\$?\d+(\.(\d{2}))?$")]
-        public string phoneNumber { get; set; }
-        public Gender gender { get; set; }
+        public string PhoneNumber { get; set; }
+        public Gender Genders { get; set; }
         [RegularExpression("[A-Za-z0-9]+@[a-z]+\\.[a-z]{2,3}", ErrorMessage ="Invalid Email Format")]
         public string Email { get; set; }
         [Required]
@@ -24,7 +24,7 @@ namespace BankingAPIs.ModelClass
         [Compare("Password",ErrorMessage = "Mismatch of password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
-        public AccountType accountType { get; set; }
+        public AccountType AccountTypes { get; set; }
 
         
     }

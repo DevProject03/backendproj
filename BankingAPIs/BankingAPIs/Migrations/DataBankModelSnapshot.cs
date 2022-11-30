@@ -54,6 +54,9 @@ namespace BankingAPIs.Migrations
                     b.Property<double>("AccountBalance")
                         .HasColumnType("double");
 
+                    b.Property<int>("AccountTypes")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
 
@@ -71,6 +74,9 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Genders")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -82,12 +88,6 @@ namespace BankingAPIs.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int>("accountType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("gender")
-                        .HasColumnType("int");
 
                     b.HasKey("Id", "AccountGenerated");
 
@@ -119,6 +119,9 @@ namespace BankingAPIs.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("AccountTypes")
+                        .HasColumnType("int");
+
                     b.Property<string>("ConfirmPassword")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -134,6 +137,9 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Genders")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -142,13 +148,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("accountType")
-                        .HasColumnType("int");
-
-                    b.Property<int>("gender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("phoneNumber")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -177,11 +177,11 @@ namespace BankingAPIs.Migrations
                     b.Property<DateTime>("TransDate")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("TransactionStat")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("TranscationId")
                         .HasColumnType("char(36)");
-
-                    b.Property<int>("transactionStatus")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

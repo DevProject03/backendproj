@@ -12,40 +12,6 @@
       },
       "results": [
         {
-          "ruleId": "CS8618",
-          "level": "warning",
-          "message": "Non-nullable field '_shoppingCart' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/FakeRepo.cs",
-                "region": {
-                  "startLine": 20,
-                  "startColumn": 16,
-                  "endLine": 20,
-                  "endColumn": 24
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/FakeRepo.cs",
-                "region": {
-                  "startLine": 17,
-                  "startColumn": 48,
-                  "endLine": 17,
-                  "endColumn": 61
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "CS8603",
           "level": "warning",
           "message": "Possible null reference return.",
@@ -54,94 +20,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/FakeRepo.cs",
                 "region": {
-                  "startLine": 88,
+                  "startLine": 89,
                   "startColumn": 20,
-                  "endLine": 88,
+                  "endLine": 89,
                   "endColumn": 21
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8604",
-          "level": "warning",
-          "message": "Possible null reference argument for parameter 'Password' in 'SignUp ISignUp.Create(SignUp newaccount, string Password, string ConfirmPassword)'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/SignupControllerTest.cs",
-                "region": {
-                  "startLine": 37,
-                  "startColumn": 54,
-                  "endLine": 37,
-                  "endColumn": 72
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8604",
-          "level": "warning",
-          "message": "Possible null reference argument for parameter 'ConfirmPassword' in 'SignUp ISignUp.Create(SignUp newaccount, string Password, string ConfirmPassword)'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/SignupControllerTest.cs",
-                "region": {
-                  "startLine": 38,
-                  "startColumn": 17,
-                  "endLine": 38,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8604",
-          "level": "warning",
-          "message": "Possible null reference argument for parameter 'Password' in 'SignUp ISignUp.Create(SignUp newaccount, string Password, string ConfirmPassword)'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/SignupControllerTest.cs",
-                "region": {
-                  "startLine": 55,
-                  "startColumn": 54,
-                  "endLine": 55,
-                  "endColumn": 72
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8604",
-          "level": "warning",
-          "message": "Possible null reference argument for parameter 'ConfirmPassword' in 'SignUp ISignUp.Create(SignUp newaccount, string Password, string ConfirmPassword)'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/SignupControllerTest.cs",
-                "region": {
-                  "startLine": 56,
-                  "startColumn": 17,
-                  "endLine": 56,
-                  "endColumn": 42
                 }
               }
             }
@@ -159,9 +41,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/CustomerControllerTest.cs",
                 "region": {
-                  "startLine": 130,
+                  "startLine": 137,
                   "startColumn": 71,
-                  "endLine": 130,
+                  "endLine": 137,
                   "endColumn": 74
                 }
               }
@@ -180,9 +62,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/CustomerControllerTest.cs",
                 "region": {
-                  "startLine": 130,
+                  "startLine": 137,
                   "startColumn": 13,
-                  "endLine": 130,
+                  "endLine": 137,
                   "endColumn": 76
                 }
               }
@@ -201,9 +83,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/CustomerControllerTest.cs",
                 "region": {
-                  "startLine": 131,
+                  "startLine": 138,
                   "startColumn": 60,
-                  "endLine": 131,
+                  "endLine": 138,
                   "endColumn": 63
                 }
               }
@@ -222,9 +104,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/CustomerControllerTest.cs",
                 "region": {
-                  "startLine": 134,
+                  "startLine": 141,
                   "startColumn": 70,
-                  "endLine": 134,
+                  "endLine": 141,
                   "endColumn": 73
                 }
               }
@@ -233,79 +115,9 @@
           "properties": {
             "warningLevel": 1
           }
-        },
-        {
-          "ruleId": "CS0219",
-          "level": "warning",
-          "message": "The variable 'pass' is assigned but its value is never used",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/CustomerControllerTest.cs",
-                "region": {
-                  "startLine": 219,
-                  "startColumn": 17,
-                  "endLine": 219,
-                  "endColumn": 21
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 3
-          }
-        },
-        {
-          "ruleId": "CS0649",
-          "level": "warning",
-          "message": "Field 'FakeRepo._shoppingCart' is never assigned to, and will always have its default value null",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/FakeRepo.cs",
-                "region": {
-                  "startLine": 17,
-                  "startColumn": 48,
-                  "endLine": 17,
-                  "endColumn": 61
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 4
-          }
         }
       ],
       "rules": {
-        "CS0219": {
-          "id": "CS0219",
-          "shortDescription": "Variable is assigned but its value is never used",
-          "defaultLevel": "warning",
-          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0219)",
-          "properties": {
-            "category": "Compiler",
-            "isEnabledByDefault": true,
-            "tags": [
-              "Compiler",
-              "Telemetry"
-            ]
-          }
-        },
-        "CS0649": {
-          "id": "CS0649",
-          "shortDescription": "Field is never assigned to, and will always have its default value",
-          "defaultLevel": "warning",
-          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0649)",
-          "properties": {
-            "category": "Compiler",
-            "isEnabledByDefault": true,
-            "tags": [
-              "Compiler",
-              "Telemetry"
-            ]
-          }
-        },
         "CS8603": {
           "id": "CS8603",
           "shortDescription": "Possible null reference return.",
@@ -325,20 +137,6 @@
           "shortDescription": "Possible null reference argument.",
           "defaultLevel": "warning",
           "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8604)",
-          "properties": {
-            "category": "Compiler",
-            "isEnabledByDefault": true,
-            "tags": [
-              "Compiler",
-              "Telemetry"
-            ]
-          }
-        },
-        "CS8618": {
-          "id": "CS8618",
-          "shortDescription": "Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.",
-          "defaultLevel": "warning",
-          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8618)",
           "properties": {
             "category": "Compiler",
             "isEnabledByDefault": true,

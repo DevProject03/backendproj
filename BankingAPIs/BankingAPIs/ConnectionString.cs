@@ -2,6 +2,6 @@
 {
     public class ConnectionStrings
     {
-        public string DefaultConnections { get; set; }
+        public string? DefaultConnections { get; set; }
     }
 }

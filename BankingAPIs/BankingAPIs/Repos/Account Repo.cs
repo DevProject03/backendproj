@@ -15,7 +15,7 @@ namespace BankingAPIs.Repos
         private readonly DataBank _dbcontext;
         
 
-        public AccountRepo(DataBank Bankdata, IMapper mapper)
+        public AccountRepo(DataBank Bankdata)
         {
             _dbcontext = Bankdata;
            

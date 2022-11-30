@@ -12,7 +12,7 @@ namespace BankingAPIs.ModelClass
         public string SourceAccount { get; set; }
         public string DestinationAccount { get; set; }
 
-        public TransactionStatus transactionStatus { get; set; } 
+        public TransactionStatus TransactionStat { get; set; } 
         
         public DateTime TransDate { get; set; }
 
