@@ -27,16 +27,19 @@ pipeline{
             }
         }
         
-        stage('SonarQube Analysis') {
-//                 def scannerHome = tool 'SonarScanner for MSBuild'
-//                     withSonarQubeEnv() 
+        stage('SonarQube Analysis') {         
             steps{
-                script{
-                   sh "cd backendproj/BankingAPIs && dotnet tool install --global dotnet-sonarscanner"
-                   sh "cd backendproj/BankingAPIs && dotnet-sonarscanner begin k:backendapp d:sonar.host.url=https://72e8-41-58-130-138.eu.ngrok.io d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
-                   sh "cd backendproj/BankingAPIs && dotnet build"
-                   sh "cd backendproj/BankingAPIs && dotnet sonarscanner end d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
-                } 
+                 def sqScannerMsBuildHome = tool 'SonarScanner'
+                 withSonarQubeEnv('My SonarQube Server') {
+                 bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
+                 bat 'MSBuild.exe /t:Rebuild'
+                 bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end"
+//                 script{
+//                    sh "cd backendproj/BankingAPIs && dotnet tool install --global dotnet-sonarscanner --version 5.8.0"
+//                    sh "cd backendproj/BankingAPIs && dotnet-sonarscanner begin k:backendapp d:sonar.host.url=https://72e8-41-58-130-138.eu.ngrok.io d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
+//                    sh "cd backendproj/BankingAPIs && dotnet build"
+//                    sh "cd backendproj/BankingAPIs && dotnet sonarscanner end d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
+//                 } 
             }
         }
 
