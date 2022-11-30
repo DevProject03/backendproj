@@ -28,9 +28,10 @@ pipeline{
         }
         
         stage('SonarQube analysis') {
-            def sqScannerMsBuildHome = tool 'SonarScanner'
+           
             steps{
-                 withSonarQubeEnv('My SonarQube Server') {
+                 def sqScannerMsBuildHome = tool 'SonarScanner'
+                 withSonarQubeEnv('sonarqube-9.7.1') {
                     bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
                     bat 'MSBuild.exe /t:Rebuild'
                     bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end"
