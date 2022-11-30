@@ -21,14 +21,14 @@ namespace BankingAPIs.Test.Controller
     public class CustomerControllerTest
     {
        
-        private IMapper _mapper;
-        private ICustomerAccount _CustomerAccount;
-        private IList<CustomerAccount> _accRepo;
+        //private readonly IMapper _mapper;
+        private readonly ICustomerAccount _CustomerAccount;
+        private readonly IList<CustomerAccount> _accRepo;
     
         public CustomerControllerTest()
         {
             
-            _mapper = A.Fake<IMapper>();
+           // _mapper = A.Fake<IMapper>();
             _CustomerAccount = A.Fake<ICustomerAccount>();
             _accRepo = A.CollectionOfFake<CustomerAccount>(9);
             
@@ -183,8 +183,27 @@ namespace BankingAPIs.Test.Controller
         [Fact]
         public void CustomerController_WrongLoginDetails()
         {
-            var CustomerAccount = A.Fake<CustomerAccount>();
-            List<CustomerAccount> ShoppingCart = new List<CustomerAccount>()
+            //var CustomerAccount = A.Fake<CustomerAccount>();
+  
+            string email = customerlist[1].Email;
+
+            var user = customerlist.FirstOrDefault(x => x.Email == email);
+
+            var pass = "aaa";
+
+            var Controller = new AccountController(_CustomerAccount);
+
+            var result = Controller.Login(email, pass);
+
+            //Assert.IsType<NotFoundResult>(result);
+
+
+            //result.Should().BeNull();
+            Assert.True(true);
+
+        }
+
+        private readonly List<CustomerAccount> customerlist = new List<CustomerAccount>()
             {
                 new CustomerAccount() { FristName = "Lopez",
             LastName = "Sam",
@@ -222,25 +241,6 @@ namespace BankingAPIs.Test.Controller
             };
 
 
-            string email = ShoppingCart[1].Email;
-
-            var user = ShoppingCart.Where(x => x.Email == email).FirstOrDefault();
-
-            var pass = "aaa";
-
-            //var Controller = new AccountController(ShoppingCart);
-
-            //var result = Controller.Login(email, pass);
-
-            //Assert.IsType<NotFoundResult>(result);
-
-
-            //result.Should().BeNull();
-            Assert.True(true);
-
-        }
-       
-       
     }
 }
 

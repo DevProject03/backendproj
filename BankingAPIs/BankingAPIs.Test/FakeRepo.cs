@@ -14,14 +14,16 @@ namespace BankingAPIs.Test
 {
     public class FakeRepo : ICustomerAccount
     {
-        private readonly List<CustomerAccount> _shoppingCart;
-        private readonly IMapper _mapper;
+        
 
-        public FakeRepo(IMapper mapper, List<CustomerAccount> _shoppingCart)
+        public FakeRepo()
         {
 
-            _mapper = mapper;
-            List<CustomerAccount> ShoppingCart = new List<CustomerAccount>()
+            
+            
+        }
+
+        private readonly List<CustomerAccount> customerlist = new List<CustomerAccount>()
             {
                 new CustomerAccount() { FristName = "Lopez",
             LastName = "Sam",
@@ -57,22 +59,21 @@ namespace BankingAPIs.Test
             DateCreated = DateTime.Now,
             DateOfBirth = DateTime.Now, }
             };
-        }
 
         public CustomerAccount Create(CustomerAccount newacc, string Password)
         {
-            _shoppingCart.Add(newacc);
+            customerlist.Add(newacc);
 
             return newacc;
         }
 
         public void DeleteCustomer(string AcountNumber)
         {
-            var acc = _shoppingCart.Where(a => a.AccountGenerated == AcountNumber).FirstOrDefault();
+            var acc = customerlist.FirstOrDefault(a => a.AccountGenerated == AcountNumber);
 
             if (acc != null)
             {
-                _shoppingCart.Remove(acc);
+                customerlist.Remove(acc);
 
             }
         }
@@ -84,7 +85,7 @@ namespace BankingAPIs.Test
 
         public CustomerAccount GetAccountById(int Id)
         {
-            var d = _shoppingCart.Where(x => x.Id == Id).FirstOrDefault();
+            var d = customerlist.FirstOrDefault(x => x.Id == Id);
             return d;
 
         }

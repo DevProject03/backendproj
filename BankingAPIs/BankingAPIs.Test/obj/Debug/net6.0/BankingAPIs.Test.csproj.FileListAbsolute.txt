@@ -582,3 +582,6 @@ C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\
 C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\System.Web.Http.dll
 C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\System.Web.Http.SelfHost.dll
 C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\Autofac.dll
+C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\Autofac.Extras.Moq.dll
+C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs.Test\bin\Debug\net6.0\AutoCodeCoverage.dll

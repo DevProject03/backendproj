@@ -1,4 +1,5 @@
-j
+]
+TC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\ConnectionString.csutf-8j
 aC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Controllers\AccountController.csutf-8h
 _C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Controllers\AdminController.csutf-8i
 `C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Controllers\SignUpController.csutf-8Z
@@ -9,13 +10,13 @@ YC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Interface\IAdm
 ^C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Interface\ICustomerAccount.csutf-8]
 TC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Interface\ILogin.csutf-8^
 UC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Interface\ISignUp.csutf-8c
-ZC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Interface\ITranscation.csutf-8s
-jC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221123094602_NewMigration.csutf-8~
-sC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221123094602_NewMigration.Designer.csutf-8j
-aC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221123111136_2nd.csutf-8u
-jC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221123111136_2nd.Designer.csutf-8l
-cC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221123113427_again.csutf-8w
-lC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221123113427_again.Designer.csutf-8o
+ZC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Interface\ITranscation.csutf-8q
+hC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221129132753_FristSatte.csutf-8|
+qC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221129132753_FristSatte.Designer.csutf-8o
+fC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221129213036_thirdone.csutf-8z
+oC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221129213036_thirdone.Designer.csutf-8m
+dC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221129215957_fourth.csutf-8x
+mC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\20221129215957_fourth.Designer.csutf-8o
 dC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\Migrations\DataBankModelSnapshot.csutf-8e
 \C:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\ModelClass\AccountNumber.csutf-8b
 YC:\Users\jlopez\source\repos\backendproj\BankingAPIs\BankingAPIs\ModelClass\AdminLogin.csutf-8g

@@ -49,6 +49,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoCodeCoverage": {
+              "target": "Package",
+              "version": "[1.3.1, )"
+            },
+            "Autofac.Extras.Moq": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
             "FakeItEasy": {
               "target": "Package",
               "version": "[7.3.1, )"
@@ -63,27 +71,35 @@
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.1.0, )"
+              "version": "[17.4.0, )"
             },
             "Moq": {
               "target": "Package",
               "version": "[4.18.2, )"
             },
+            "OpenCover": {
+              "target": "Package",
+              "version": "[4.7.1221, )"
+            },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.2, )"
+              "version": "[3.2.0, )"
+            },
+            "ncrunch-vs2015": {
+              "target": "Package",
+              "version": "[2.16.13, )"
             },
             "xunit": {
               "target": "Package",
-              "version": "[2.4.1, )"
+              "version": "[2.4.2, )"
             },
             "xunit.runner.visualstudio": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.4.3, )"
+              "version": "[2.4.5, )"
             }
           },
           "imports": [
@@ -155,6 +171,10 @@
               "target": "Package",
               "version": "[12.0.0, )"
             },
+            "Autofac.Extras.Moq": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.0.3, )"
@@ -182,6 +202,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.10, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.2, )"
             },
             "MySql.Data": {
               "target": "Package",
