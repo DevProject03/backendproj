@@ -27,7 +27,7 @@ pipeline{
             }
         }
         
-        stage('SonarQube Analysis') {
+        stage('SonarQube analysis') {
             def sqScannerMsBuildHome = tool 'SonarScanner'
             steps{
                  withSonarQubeEnv('My SonarQube Server') {
