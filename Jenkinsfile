@@ -32,7 +32,7 @@ pipeline{
             steps{
 //                  def sqScannerMsBuildHome = tool 'SonarScanner'
                  withSonarQubeEnv('sonarqube-9.7.1') {
-                    bat "dotnet-sonarscanner begin k:backendapp d:sonar.host.url=https://72e8-41-58-130-138.eu.ngrok.io d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4""
+                    bat "dotnet-sonarscanner begin k:backendapp d:sonar.host.url=https://72e8-41-58-130-138.eu.ngrok.io d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4"
                     bat "dotnet build"
                     bat "dotnet sonarscanner end d:sonar.login=sqp_6a630dc78f2e3584a8d63f0dd8608eed6dba98b4
 //                 script{
