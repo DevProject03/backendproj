@@ -1,11 +1,7 @@
-﻿using AutoMapper;
-using BankingAPIs.DATA;
-using BankingAPIs.DTOs;
+﻿using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
-using BankingAPIs.Repos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BankingAPIs.Controllers
 {
@@ -13,67 +9,102 @@ namespace BankingAPIs.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        
+
         private readonly ICustomerAccount _customerAccount;
 
-       
-       
+
+
 
         public AccountController(ICustomerAccount customerAccount)
         {
-            
+
             _customerAccount = customerAccount;
-            
-            
+
+
         }
 
         [HttpGet("getAccountById")]
         public IActionResult GetAccountById(int Id)
         {
-            var d = _customerAccount.GetAccountById(Id);
-
-            if (d == null)
+            try
             {
-                return BadRequest("Not Found");
+                var d = _customerAccount.GetAccountById(Id);
+
+                if (d == null)
+                {
+                    return NotFound("Not Found");
+                }
+
+                return Ok(d);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
             }
 
-            return Ok(d);
         }
 
         [HttpGet("getAccountByName")]
         public IActionResult GetAccountByName(string Name)
         {
-            var d = _customerAccount.GetAccountByName(Name);
-
-            if (d == null)
+            try
             {
-                return BadRequest("Not Found");
+                var d = _customerAccount.GetAccountByName(Name);
+
+                if (d == null)
+                {
+                    return NotFound("Not Found");
+                }
+
+                return Ok(d);
+            }
+            catch (Exception ex)
+            {
+
+                return NotFound(ex.Message);
             }
 
-            return Ok(d);
         }
 
         [HttpGet("getAccountByAccountNumber")]
         public IActionResult GetAccountByAccountNumber(string AccountNumber)
         {
-
-            var d = _customerAccount.GetAccountByAccountNumber(AccountNumber);
-
-            if (d == null)
+            try
             {
-                return NotFound("Not Found");
+                var d = _customerAccount.GetAccountByAccountNumber(AccountNumber);
+
+                if (d == null)
+                {
+                    return NotFound("Not Found");
+                }
+
+
+                return Ok(d);
+            }
+            catch (Exception ex)
+            {
+
+                return NotFound(ex.Message);
             }
 
 
-            return Ok(d);
         }
 
         [HttpGet("getDetails")]
 
         public IActionResult GetDetails()
         {
-            var b = _customerAccount.GetAccounts();
-            return Ok(b);
+            try
+            {
+                var b = _customerAccount.GetAccounts();
+                return Ok(b);
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
 
         }
 
@@ -81,31 +112,44 @@ namespace BankingAPIs.Controllers
 
         public ActionResult<IEnumerable<CustomerAccount>> Search(string SearchQuery)
         {
-            var b =  _customerAccount.SearchAccounts(SearchQuery);
-
-            if (b == null)
+            try
             {
-                return BadRequest("Not Found");
+                var b = _customerAccount.SearchAccounts(SearchQuery);
+
+                if (b == null)
+                {
+                    return BadRequest("Not Found");
+                }
+
+                return Ok(b);
+            }
+            catch (Exception ex)
+            {
+
+                return NotFound(ex.Message);
             }
 
-            return Ok(b);
         }
 
-        
+
         [HttpDelete("DeleteCustomer")]
 
         public ActionResult DeleteCustomer(string AccountNumber)
         {
-            CustomerAccount acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
-
-            if (acc == null)
+            try
             {
-                
-                return NotFound("Not Found");
+                var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
+                _customerAccount.DeleteCustomer(acc.Id);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+
+                return NotFound(ex.Message);
             }
 
-            return NoContent();
 
         }
 
@@ -113,23 +157,50 @@ namespace BankingAPIs.Controllers
 
         public IActionResult Login(string Email, string password)
         {
-            var b = _customerAccount.Login(Email, password);
-
-            if (b == null)
+            try
             {
-                return NotFound("Invalid Email or Password");
-            }
+                var b = _customerAccount.Login(Email, password);
 
-            return Ok(b);
+                if (b == null)
+                {
+                    return NotFound("Invalid Email or Password");
+                }
+
+                return Ok(b);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [HttpPut("UpdateCustomer")]
         public IActionResult UpdateCustomer(AccountDto accountDto, string AccountNumber)
         {
-            var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
-           
-            return acc != null ? Ok(_customerAccount.UpdateCustomer(AccountNumber, accountDto)) : NotFound("Not Found");
+            try
+            {
+                var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
+                try
+                {
+                    return acc != null ? Ok(_customerAccount.UpdateCustomer(AccountNumber, accountDto)) : NotFound("Not Found");
+                }
+                catch (Exception ex)
+                {
+
+                    return NotFound(ex.Message);
+                }
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+
+
+
         }
 
     }

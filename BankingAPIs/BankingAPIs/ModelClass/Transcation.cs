@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Transactions;
 
 namespace BankingAPIs.ModelClass
 {
@@ -12,8 +11,8 @@ namespace BankingAPIs.ModelClass
         public string SourceAccount { get; set; }
         public string DestinationAccount { get; set; }
 
-        public TransactionStatus TransactionStat { get; set; } 
-        
+        public TransactionStatus TransactionStat { get; set; }
+
         public DateTime TransDate { get; set; }
 
         public enum TransactionStatus
@@ -25,7 +24,7 @@ namespace BankingAPIs.ModelClass
 
         public Transcation()
         {
-           
+
 
         }
     }

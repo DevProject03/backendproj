@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using BankingAPIs.ModelClass;
 using BankingAPIs.DTOs;
+using BankingAPIs.ModelClass;
 
 namespace BankingAPIs.Helper
 {
-    public class MappingProfile: Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-            CreateMap<CustomerAccount, AccountDto >();
+            CreateMap<CustomerAccount, AccountDto>();
 
             CreateMap<AccountDto, CustomerAccount>();
 

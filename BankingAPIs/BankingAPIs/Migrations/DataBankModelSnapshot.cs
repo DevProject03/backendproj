@@ -48,11 +48,12 @@ namespace BankingAPIs.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("AccountGenerated")
-                        .HasColumnType("varchar(255)");
-
                     b.Property<double>("AccountBalance")
                         .HasColumnType("double");
+
+                    b.Property<string>("AccountGenerated")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("AccountTypes")
                         .HasColumnType("int");
@@ -89,7 +90,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id", "AccountGenerated");
+                    b.HasKey("Id");
 
                     b.ToTable("CustomerAccounts");
                 });

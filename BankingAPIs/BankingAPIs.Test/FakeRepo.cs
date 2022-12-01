@@ -1,26 +1,18 @@
-﻿using AutoMapper;
-using BankingAPIs.DTOs;
+﻿using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankingAPIs.Test
 {
     public class FakeRepo : ICustomerAccount
     {
-        
+
 
         public FakeRepo()
         {
 
-            
-            
+
+
         }
 
         private readonly List<CustomerAccount> customerlist = new List<CustomerAccount>()
@@ -67,9 +59,9 @@ namespace BankingAPIs.Test
             return newacc;
         }
 
-        public void DeleteCustomer(string AcountNumber)
+        public void DeleteCustomer(int Id)
         {
-            var acc = customerlist.FirstOrDefault(a => a.AccountGenerated == AcountNumber);
+            var acc = customerlist.FirstOrDefault(a => a.Id == Id);
 
             if (acc != null)
             {
@@ -114,6 +106,8 @@ namespace BankingAPIs.Test
         {
             throw new NotImplementedException();
         }
+
+
     }
 
 

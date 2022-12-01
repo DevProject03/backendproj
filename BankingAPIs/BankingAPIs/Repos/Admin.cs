@@ -1,22 +1,20 @@
-﻿using AutoMapper;
-using BankingAPIs.DATA;
+﻿using BankingAPIs.DATA;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
-using Microsoft.EntityFrameworkCore;
 
 namespace BankingAPIs.Repos
 {
     public class Admin : IAdminLogin
     {
         private readonly DataBank _dbcontext;
-        
+
 
         public Admin(DataBank Bankdata)
         {
             _dbcontext = Bankdata;
-            
+
         }
-      
+
 
         public AdminLogin Login(string Email, string password)
         {
@@ -24,7 +22,7 @@ namespace BankingAPIs.Repos
 
             if (user == null)
             {
-                return null;
+                throw (new ApplicationException("Unauthorized Login"));
             }
 
             //bool ValidPassword = BCrypt.Net.BCrypt.Verify(password, user.Password);
@@ -33,7 +31,7 @@ namespace BankingAPIs.Repos
             {
                 return user;
             }
-            return null;
+            throw (new ApplicationException("Wrong Email or Password"));
         }
 
 

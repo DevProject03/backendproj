@@ -1,27 +1,22 @@
-﻿using AutoMapper;
-using BankingAPIs.DATA;
+﻿using BankingAPIs.DATA;
 using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Principal;
-using System.Xml.Linq;
 
 namespace BankingAPIs.Repos
 {
     public class AccountRepo : ICustomerAccount
     {
         private readonly DataBank _dbcontext;
-        
+
 
         public AccountRepo(DataBank Bankdata)
         {
             _dbcontext = Bankdata;
-           
+
         }
 
-       
+
         public CustomerAccount Create(CustomerAccount newacc, string Password)
         {
             _dbcontext.CustomerAccounts.Add(newacc);
@@ -32,16 +27,20 @@ namespace BankingAPIs.Repos
             return newacc;
         }
 
-        public void DeleteCustomer(string AcountNumber)
+        public void DeleteCustomer(int Id)
         {
-            var account = _dbcontext.CustomerAccounts.Find(AcountNumber);
-            if (account != null)
-            {
-                _dbcontext.CustomerAccounts.Remove(account);
+            var account = _dbcontext.CustomerAccounts.Where(x => x.Id == Id).FirstOrDefault();
 
-                _dbcontext.SaveChanges();
+            if (account == null)
+            {
+                throw (new ApplicationException("Account Not Found"));
             }
+
+            _dbcontext.CustomerAccounts.Remove(account);
+
+            _dbcontext.SaveChanges();
         }
+
 
         public CustomerAccount GetAccount(string Name)
         {
@@ -51,15 +50,16 @@ namespace BankingAPIs.Repos
             {
                 return account;
             }
-            return null;
+            throw (new ApplicationException("Account Not Found"));
         }
 
         public CustomerAccount GetAccountByAccountNumber(string AccountNumber)
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber).FirstOrDefault();
+
             if (account == null)
             {
-                return null;
+                throw (new ApplicationException("Account Not Found"));
             }
             return account;
         }
@@ -71,7 +71,7 @@ namespace BankingAPIs.Repos
             var account = _dbcontext.CustomerAccounts.Where(x => x.Id == Id).FirstOrDefault();
             if (account == null)
             {
-               return null;
+                throw (new ApplicationException("Account Not Found"));
             }
             return account;
         }
@@ -81,7 +81,7 @@ namespace BankingAPIs.Repos
             var account = _dbcontext.CustomerAccounts.Where(x => x.FristName == Name).FirstOrDefault();
             if (account == null)
             {
-                return null;
+                throw (new ApplicationException("Account Not Found"));
             }
             return account;
         }
@@ -119,14 +119,14 @@ namespace BankingAPIs.Repos
 
             if (user == null)
             {
-                throw (new ApplicationException("Account not found"));
+                throw (new ApplicationException("Invalid Email or Password"));
             }
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(password, user.Password);
 
             if (!ValidPassword)
             {
-                return null;
+                throw (new ApplicationException("Invalid Email or Password"));
             }
 
 
@@ -136,13 +136,13 @@ namespace BankingAPIs.Repos
         public CustomerAccount UpdateCustomer(string AccountNumber, AccountDto NewUpdate)
         {
             var accountToBeUpdated = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber).FirstOrDefault();
-           
+
             if (accountToBeUpdated == null) throw (new ApplicationException("Account not found"));
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(NewUpdate.Oldpassword, accountToBeUpdated.Password);
 
             //throw error because email passeed doesn't matc wiith
-            
+
             if (!ValidPassword) throw (new ApplicationException("Wrong Old password"));
             //so we have a match
 

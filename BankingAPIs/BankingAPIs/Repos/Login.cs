@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using BankingAPIs.DATA;
-using BankingAPIs.Interface;
+﻿using BankingAPIs.Interface;
 
 namespace BankingAPIs.Repos
 {
@@ -11,5 +9,5 @@ namespace BankingAPIs.Repos
             throw new NotImplementedException();
         }
     }
-       
+
 }

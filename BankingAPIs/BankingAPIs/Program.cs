@@ -1,26 +1,25 @@
 using BankingAPIs.DATA;
 using BankingAPIs.Interface;
-using BankingAPIs.ModelClass;
 using BankingAPIs.Repos;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//Add services to the container.
 
 //add automappeerr
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped <ISignUp, Signup>();
+builder.Services.AddScoped<ISignUp, Signup>();
 builder.Services.AddScoped<ICustomerAccount, AccountRepo>();
-builder.Services.AddScoped <IAdminLogin, Admin>();
+builder.Services.AddScoped<IAdminLogin, Admin>();
 //var connectionString = builder.Configuration.GetConnectionString(name: "DefaultConnections");
 //var cc = builder.Configuration.GetSection("DefaultConnections");
 var b = Environment.GetEnvironmentVariable("DefaultConnections");
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataBank>(opt =>
-{ 
+{
 
     //opt.UseMySql(b)
     opt.UseMySql(b, ServerVersion.AutoDetect(b));

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAPIs.Migrations
 {
     [DbContext(typeof(DataBank))]
-    [Migration("20221129215957_fourth")]
-    partial class fourth
+    [Migration("20221201075417_Ddd")]
+    partial class Ddd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,11 +50,12 @@ namespace BankingAPIs.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("AccountGenerated")
-                        .HasColumnType("varchar(255)");
-
                     b.Property<double>("AccountBalance")
                         .HasColumnType("double");
+
+                    b.Property<string>("AccountGenerated")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("AccountTypes")
                         .HasColumnType("int");
@@ -91,7 +92,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id", "AccountGenerated");
+                    b.HasKey("Id");
 
                     b.ToTable("CustomerAccounts");
                 });
