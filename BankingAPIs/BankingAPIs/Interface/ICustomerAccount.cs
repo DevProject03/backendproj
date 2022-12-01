@@ -1,6 +1,5 @@
 ﻿using BankingAPIs.DTOs;
 using BankingAPIs.ModelClass;
-using System.Collections.Generic;
 
 namespace BankingAPIs.Interface
 {
@@ -12,7 +11,7 @@ namespace BankingAPIs.Interface
         IEnumerable<CustomerAccount> SearchAccounts(string SearchQuery);
         CustomerAccount UpdateCustomer(string AccountNumber, AccountDto NewUpdate);
         CustomerAccount Login(string Email, string password);
-        void DeleteCustomer(string AcountNumber);  
+        void DeleteCustomer(int Id);
         CustomerAccount GetAccountById(int Id);
         CustomerAccount GetAccountByName(string Name);
         CustomerAccount GetAccountByAccountNumber(string AccountNumber);

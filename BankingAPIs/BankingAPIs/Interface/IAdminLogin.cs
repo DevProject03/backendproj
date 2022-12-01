@@ -6,6 +6,6 @@ namespace BankingAPIs.Interface
     {
         AdminLogin Login(string Email, string password);
         // Method that the repo will create
-       
+
     }
 }

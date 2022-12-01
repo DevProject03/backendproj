@@ -11,11 +11,11 @@ namespace BankingAPIs.DATA
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CustomerAccount>()
-                  .HasKey(m => new { m.Id, m.AccountGenerated });
-        }
+                  .HasKey(m => new { m.AccountGenerated});
+        }*/
         public DbSet<CustomerAccount> CustomerAccounts { get; set; }
         public DbSet<Login> Logins { get; set; }
         public DbSet<AdminLogin> AdminLogins { get; set; }

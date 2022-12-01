@@ -1,16 +1,10 @@
 ﻿using AutoMapper;
 using BankingAPIs.Controllers;
-using BankingAPIs.DATA;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
 using FakeItEasy;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankingAPIs.Test.Controller
 {
@@ -36,9 +30,9 @@ namespace BankingAPIs.Test.Controller
 
             A.CallTo(() => _signup.Create(signupacc, signupacc.Password,
                 signupacc.ConfirmPassword)).Returns(new SignUp());
-            
-            var controller = new SignUpController( _signup);
-           
+
+            var controller = new SignUpController(_signup);
+
             //Act
 
             var result = controller.CreateNewAccount(signupacc);

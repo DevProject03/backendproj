@@ -1,9 +1,6 @@
-﻿using AutoMapper;
-using BankingAPIs.DATA;
-using BankingAPIs.Interface;
+﻿using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Principal;
 
 namespace BankingAPIs.Controllers
 {
@@ -11,12 +8,12 @@ namespace BankingAPIs.Controllers
     [ApiController]
     public class SignUpController : ControllerBase
     {
-        
+
         private readonly ISignUp _signup;
 
         public SignUpController(ISignUp signUp)
         {
-           
+
             _signup = signUp;
         }
 
@@ -24,8 +21,16 @@ namespace BankingAPIs.Controllers
 
         public IActionResult CreateNewAccount(SignUp signup)
         {
-            
-            return Ok(_signup.Create(signup, signup.Password, signup.ConfirmPassword));
+            try
+            {
+                return Ok(_signup.Create(signup, signup.Password, signup.ConfirmPassword));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
 
         }
 

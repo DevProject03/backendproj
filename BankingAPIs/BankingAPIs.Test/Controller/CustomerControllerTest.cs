@@ -1,41 +1,32 @@
-﻿using AutoMapper;
-using BankingAPIs.Controllers;
-using BankingAPIs.DATA;
+﻿using BankingAPIs.Controllers;
 using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
 using FakeItEasy;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using BankingAPIs.Test;
 
 
 namespace BankingAPIs.Test.Controller
 {
     public class CustomerControllerTest
     {
-       
+
         //private readonly IMapper _mapper;
         private readonly ICustomerAccount _CustomerAccount;
         private readonly IList<CustomerAccount> _accRepo;
-    
+
         public CustomerControllerTest()
         {
-            
-           // _mapper = A.Fake<IMapper>();
+
+            // _mapper = A.Fake<IMapper>();
             _CustomerAccount = A.Fake<ICustomerAccount>();
             _accRepo = A.CollectionOfFake<CustomerAccount>(9);
-            
+
             //_services = new FakeRepo(mapper, _shoppingCart);
 
         }
-        
+
         [Fact]
         public void CustomerController_GetUsersList_ReturnUsers()
         {
@@ -46,7 +37,7 @@ namespace BankingAPIs.Test.Controller
             var result = Controller.GetDetails() as OkObjectResult;
 
 
-            
+
             Assert.NotNull(result);
             result.Should().BeOfType(typeof(OkObjectResult));
             Assert.IsType<OkObjectResult>(result as OkObjectResult);
@@ -69,11 +60,11 @@ namespace BankingAPIs.Test.Controller
             var result = Controller.GetAccountByAccountNumber(accnum) as OkObjectResult;
 
 
-            
+
             result.Should().NotBeNull();
             //result.Should().Be(CustomerAccount);
             Assert.IsType<OkObjectResult>(result);
-            
+
 
             //Assert.True()
 
@@ -93,10 +84,10 @@ namespace BankingAPIs.Test.Controller
 
             var User = A.Fake<ICollection<CustomerAccount>>().ToList();
 
-            var SearchQuery = _accRepo.Where(a => a.Email.Contains(CustomerAccount.Email) 
+            var SearchQuery = _accRepo.Where(a => a.Email.Contains(CustomerAccount.Email)
             || a.AccountGenerated == CustomerAccount.AccountGenerated);
 
-            var Controller = new AccountController( _CustomerAccount);
+            var Controller = new AccountController(_CustomerAccount);
 
             //var result = Controller.Search();
             Assert.True(true);
@@ -125,7 +116,7 @@ namespace BankingAPIs.Test.Controller
         public void CustomerController_Delete_NotExisitinAcc_ReturnsNotFoundResponse()
         {
             // Arrange
-          
+
 
             string? acc = null;
 
@@ -135,7 +126,7 @@ namespace BankingAPIs.Test.Controller
             // Act
             var Controller = new AccountController(_CustomerAccount);
             A.CallTo(() => _CustomerAccount.GetAccountByAccountNumber(acc)).Returns(null);
-            A.CallTo(() => _CustomerAccount.DeleteCustomer(acc)).Equals(null);
+            A.CallTo(() => _CustomerAccount.DeleteCustomer(1)).Equals(null);
 
             // var result = Controller.GetAccountByAccountNumber(acc) as NotFoundObjectResult;
             NotFoundObjectResult? result = Controller.DeleteCustomer(acc) as NotFoundObjectResult;
@@ -161,7 +152,7 @@ namespace BankingAPIs.Test.Controller
         [Fact]
         public void CustomerController_Wrongoldpassword_ReturnBadRequest()
         {
-            Assert.True(true);      
+            Assert.True(true);
         }
         [Fact]
         public void CustomerController_Login_ReturnUser()
@@ -184,7 +175,7 @@ namespace BankingAPIs.Test.Controller
         public void CustomerController_WrongLoginDetails()
         {
             //var CustomerAccount = A.Fake<CustomerAccount>();
-  
+
             string email = customerlist[1].Email;
 
             var user = customerlist.FirstOrDefault(x => x.Email == email);

@@ -2,10 +2,6 @@
 using BankingAPIs.DATA;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Net.NetworkInformation;
-using System.Security.Principal;
 
 namespace BankingAPIs.Repos
 {
@@ -13,20 +9,20 @@ namespace BankingAPIs.Repos
     {
         private readonly DataBank _dbcontext;
         private readonly IMapper _mapper;
-        
 
-        public Signup(DataBank dataBank, IMapper mapper )
+
+        public Signup(DataBank dataBank, IMapper mapper)
         {
             _dbcontext = dataBank;
             _mapper = mapper;
         }
 
-        
+
 
         public SignUp Create(SignUp newaccount, string Password, string ConfirmPassword)
         {
             if (string.IsNullOrWhiteSpace(Password) && string.IsNullOrWhiteSpace(ConfirmPassword))
-                throw new ArgumentNullException("Password cannot be empty");
+                throw (new ApplicationException("Password cannot be empty"));
 
             if (_dbcontext.CustomerAccounts.Any(x => x.Email == newaccount.Email))
                 throw (new ApplicationException("A user with this email exists"));
@@ -36,7 +32,7 @@ namespace BankingAPIs.Repos
 
             newaccount.Password = BCrypt.Net.BCrypt.HashPassword(newaccount.Password);
 
-           newaccount.ConfirmPassword = BCrypt.Net.BCrypt.HashPassword(newaccount.ConfirmPassword);
+            newaccount.ConfirmPassword = BCrypt.Net.BCrypt.HashPassword(newaccount.ConfirmPassword);
 
             _dbcontext.SignUps.Add(newaccount);
 
@@ -53,7 +49,7 @@ namespace BankingAPIs.Repos
 
             _dbcontext.SaveChanges();
 
-           
+
             return newaccount;
         }
     }

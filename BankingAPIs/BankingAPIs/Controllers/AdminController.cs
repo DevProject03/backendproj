@@ -18,14 +18,24 @@ namespace BankingAPIs.Controllers
 
         public IActionResult Login(string Email, string password)
         {
-            var b = _adminlogin.Login(Email, password);
-
-            if (b == null)
+            try
             {
-                return NotFound("Invalid Email or Password");
+                var b = _adminlogin.Login(Email, password);
+
+                if (b == null)
+                {
+                    return NotFound("Unauthorized Login");
+                }
+
+                return Ok(b);
+
+            }
+            catch (Exception ex)
+            {
+
+                return Unauthorized(ex.Message);
             }
 
-            return Ok(b);
         }
     }
 }

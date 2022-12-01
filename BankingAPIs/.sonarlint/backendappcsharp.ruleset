@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RuleSet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="SonarQube - backendapp Sonar way" Description="This rule set was automatically generated from SonarQube https://5a34-41-58-130-138.eu.ngrok.io/profiles/show?key=AYSk4j7v-3J7qK7rg7Mg" ToolsVersion="14.0">
+<RuleSet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="SonarQube - backendapp Sonar way" Description="This rule set was automatically generated from SonarQube https://3184-41-58-130-138.eu.ngrok.io/profiles/show?key=AYSk4j7v-3J7qK7rg7Mg" ToolsVersion="14.0">
   <Rules AnalyzerId="SonarAnalyzer.CSharp" RuleNamespace="SonarAnalyzer.CSharp">
     <Rule Id="S100" Action="None" />
     <Rule Id="S1006" Action="Warning" />

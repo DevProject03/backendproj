@@ -1,6 +1,6 @@
 projectKey=backendapp
-serverUrl=https://5a34-41-58-130-138.eu.ngrok.io
+serverUrl=https://3184-41-58-130-138.eu.ngrok.io
 serverVersion=9.7.1.62043
-dashboardUrl=https://5a34-41-58-130-138.eu.ngrok.io/dashboard?id=backendapp
-ceTaskId=AYTIIOsThpgkDkn80L7l
-ceTaskUrl=https://5a34-41-58-130-138.eu.ngrok.io/api/ce/task?id=AYTIIOsThpgkDkn80L7l
+dashboardUrl=https://3184-41-58-130-138.eu.ngrok.io/dashboard?id=backendapp
+ceTaskId=AYTM2IavfDNPv2xNCODm
+ceTaskUrl=https://3184-41-58-130-138.eu.ngrok.io/api/ce/task?id=AYTM2IavfDNPv2xNCODm

@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.3.0.0",
+        "fileVersion": "4.3.0-3.22465.2 (7d8de40e)",
+        "semanticVersion": "4.3.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS8603",
+          "level": "warning",
+          "message": "Possible null reference return.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/FakeRepo.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 20,
+                  "endLine": 89,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'AccountNumber' in 'CustomerAccount ICustomerAccount.GetAccountByAccountNumber(string AccountNumber)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/CustomerControllerTest.cs",
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 71,
+                  "endLine": 137,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8620",
+          "level": "warning",
+          "message": "Argument of type 'IReturnValueArgumentValidationConfiguration<CustomerAccount>' cannot be used for parameter 'configuration' of type 'IReturnValueConfiguration<CustomerAccount?>' in 'IAfterCallConfiguredWithOutAndRefParametersConfiguration<IReturnValueConfiguration<CustomerAccount?>> ReturnValueConfigurationExtensions.Returns<CustomerAccount?>(IReturnValueConfiguration<CustomerAccount?> configuration, CustomerAccount? value)' due to differences in the nullability of reference types.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/CustomerControllerTest.cs",
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 13,
+                  "endLine": 137,
+                  "endColumn": 76
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'AccountNumber' in 'ActionResult AccountController.DeleteCustomer(string AccountNumber)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs.Test/Controller/CustomerControllerTest.cs",
+                "region": {
+                  "startLine": 141,
+                  "startColumn": 70,
+                  "endLine": 141,
+                  "endColumn": 73
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS8603": {
+          "id": "CS8603",
+          "shortDescription": "Possible null reference return.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8603)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8604": {
+          "id": "CS8604",
+          "shortDescription": "Possible null reference argument.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8604)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8620": {
+          "id": "CS8620",
+          "shortDescription": "Argument cannot be used for parameter due to differences in the nullability of reference types.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8620)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
