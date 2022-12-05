@@ -58,6 +58,9 @@ namespace BankingAPIs.Migrations
                     b.Property<int>("AccountTypes")
                         .HasColumnType("int");
 
+                    b.Property<int>("BVN")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
 
@@ -71,7 +74,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("FristName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -123,6 +126,9 @@ namespace BankingAPIs.Migrations
                     b.Property<int>("AccountTypes")
                         .HasColumnType("int");
 
+                    b.Property<int>("BVN")
+                        .HasColumnType("int");
+
                     b.Property<string>("ConfirmPassword")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -134,7 +140,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("FristName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("longtext");
 

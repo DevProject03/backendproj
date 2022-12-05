@@ -155,7 +155,7 @@ namespace BankingAPIs.Controllers
 
         [HttpPost("Login")]
 
-        public IActionResult Login(Login login)
+        public IActionResult Login(LoginDTO login)
         {
             try
             {

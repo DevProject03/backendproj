@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BankingAPIs.ModelClass
+namespace BankingAPIs.DTOs
 {
-    public class Login
+    public class LoginDTO
     {
-        public int Id { get; set; }
         [RegularExpression("[A-Za-z0-9]+@[a-z]+\\.[a-z]{2,3}", ErrorMessage = "Invalid Email Format")]
         public string Email { get; set; }
 

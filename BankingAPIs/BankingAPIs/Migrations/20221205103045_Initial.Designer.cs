@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAPIs.Migrations
 {
     [DbContext(typeof(DataBank))]
-    [Migration("20221201075417_Ddd")]
-    partial class Ddd
+    [Migration("20221205103045_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +60,9 @@ namespace BankingAPIs.Migrations
                     b.Property<int>("AccountTypes")
                         .HasColumnType("int");
 
+                    b.Property<int>("BVN")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
 
@@ -73,7 +76,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("FristName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -125,6 +128,9 @@ namespace BankingAPIs.Migrations
                     b.Property<int>("AccountTypes")
                         .HasColumnType("int");
 
+                    b.Property<int>("BVN")
+                        .HasColumnType("int");
+
                     b.Property<string>("ConfirmPassword")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -136,7 +142,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("FristName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("longtext");
 

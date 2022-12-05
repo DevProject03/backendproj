@@ -158,12 +158,13 @@ namespace BankingAPIs.Test.Controller
         public void CustomerController_Login_ReturnUser()
         {
             var CustomerAccount = A.Fake<CustomerAccount>();
+            var Login = A.Fake<LoginDTO>();
             string email = CustomerAccount.Email;
             string pass = CustomerAccount.Password;
 
             var Controller = new AccountController(_CustomerAccount);
 
-            var result = Controller.Login(email, pass) as OkObjectResult;
+            var result = Controller.Login(Login) as OkObjectResult;
 
             Assert.IsType<OkObjectResult>(result);
 
@@ -179,12 +180,13 @@ namespace BankingAPIs.Test.Controller
             string email = customerlist[1].Email;
 
             var user = customerlist.FirstOrDefault(x => x.Email == email);
+            var Login = A.Fake<LoginDTO>();
 
             var pass = "aaa";
 
             var Controller = new AccountController(_CustomerAccount);
 
-            var result = Controller.Login(email, pass);
+            var result = Controller.Login(Login);
 
             //Assert.IsType<NotFoundResult>(result);
 
@@ -196,7 +198,7 @@ namespace BankingAPIs.Test.Controller
 
         private readonly List<CustomerAccount> customerlist = new List<CustomerAccount>()
             {
-                new CustomerAccount() { FristName = "Lopez",
+                new CustomerAccount() { FirstName = "Lopez",
             LastName = "Sam",
             Email = "Samuel@gmail.com",
             Password = "Anu",
@@ -207,7 +209,7 @@ namespace BankingAPIs.Test.Controller
             DateCreated = DateTime.Now,
             DateOfBirth = DateTime.Now },
 
-                new CustomerAccount() { FristName = "Lopez",
+                new CustomerAccount() { FirstName = "Lopez",
             LastName = "Sam",
             Email = "Samuel@gmail.com",
             Password = "Anu",
@@ -219,7 +221,7 @@ namespace BankingAPIs.Test.Controller
             DateOfBirth = DateTime.Now, },
 
 
-                new CustomerAccount() { FristName = "Lopez",
+                new CustomerAccount() { FirstName = "Lopez",
             LastName = "Sam",
             Email = "Samuel@gmail.com",
             Password = "Anu",

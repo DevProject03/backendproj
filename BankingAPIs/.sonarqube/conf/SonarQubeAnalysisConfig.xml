@@ -5,7 +5,7 @@
   <SonarBinDir>C:\Users\jlopez\source\repos\backendproj\BankingAPIs\.sonarqube\bin</SonarBinDir>
   <SonarScannerWorkingDirectory>C:\Users\jlopez\source\repos\backendproj\BankingAPIs</SonarScannerWorkingDirectory>
   <HasBeginStepCommandLineCredentials>true</HasBeginStepCommandLineCredentials>
-  <SonarQubeHostUrl>https://3184-41-58-130-138.eu.ngrok.io</SonarQubeHostUrl>
+  <SonarQubeHostUrl>https://5e7d-41-58-130-138.eu.ngrok.io</SonarQubeHostUrl>
   <SonarQubeVersion>9.7.1.62043</SonarQubeVersion>
   <SonarProjectKey>backendapp</SonarProjectKey>
   <AdditionalConfig>
@@ -112,10 +112,10 @@
     <Property Name="sonaranalyzer-vbnet.pluginKey">vbnet</Property>
     <Property Name="sonar.updatecenter.url">https://update.sonarsource.org/update-center.properties</Property>
     <Property Name="sonar.core.id">243B8A4D-AYSk4Tn8-3J7qK7rgyac</Property>
-    <Property Name="sonar.core.startTime">12/1/2022 9:20:19 AM</Property>
+    <Property Name="sonar.core.startTime">12/5/2022 11:48:51 AM</Property>
   </ServerSettings>
   <LocalSettings>
-    <Property Name="sonar.host.url">https://3184-41-58-130-138.eu.ngrok.io</Property>
+    <Property Name="sonar.host.url">https://5e7d-41-58-130-138.eu.ngrok.io</Property>
   </LocalSettings>
   <AnalyzersSettings>
     <AnalyzerSettings>
