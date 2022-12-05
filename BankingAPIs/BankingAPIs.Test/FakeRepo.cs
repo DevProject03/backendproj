@@ -17,7 +17,7 @@ namespace BankingAPIs.Test
 
         private readonly List<CustomerAccount> customerlist = new List<CustomerAccount>()
             {
-                new CustomerAccount() { FristName = "Lopez",
+                new CustomerAccount() { FirstName = "Lopez",
             LastName = "Sam",
             Email = "Samuel@gmail.com",
             Password = "Anu",
@@ -28,7 +28,7 @@ namespace BankingAPIs.Test
             DateCreated = DateTime.Now,
             DateOfBirth = DateTime.Now },
 
-                new CustomerAccount() { FristName = "Lopez",
+                new CustomerAccount() { FirstName = "Lopez",
             LastName = "Sam",
             Email = "Samuel@gmail.com",
             Password = "Anu",
@@ -40,7 +40,7 @@ namespace BankingAPIs.Test
             DateOfBirth = DateTime.Now, },
 
 
-                new CustomerAccount() { FristName = "Lopez",
+                new CustomerAccount() { FirstName = "Lopez",
             LastName = "Sam",
             Email = "Samuel@gmail.com",
             Password = "Anu",

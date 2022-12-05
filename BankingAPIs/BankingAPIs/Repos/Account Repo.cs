@@ -78,7 +78,7 @@ namespace BankingAPIs.Repos
 
         public CustomerAccount GetAccountByName(string Name)
         {
-            var account = _dbcontext.CustomerAccounts.Where(x => x.FristName == Name).FirstOrDefault();
+            var account = _dbcontext.CustomerAccounts.Where(x => x.FirstName == Name).FirstOrDefault();
             if (account == null)
             {
                 throw (new ApplicationException("Account Not Found"));

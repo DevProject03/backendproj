@@ -14,6 +14,142 @@
         {
           "ruleId": "CS8618",
           "level": "warning",
+          "message": "Non-nullable property 'Email' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/DTOs/LoginDTO.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 23,
+                  "endLine": 8,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/DTOs/LoginDTO.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 23,
+                  "endLine": 8,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'Password' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/DTOs/LoginDTO.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 23,
+                  "endLine": 12,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/DTOs/LoginDTO.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 23,
+                  "endLine": 12,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'SourceAccount' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/Transcation.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 16,
+                  "endLine": 25,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/Transcation.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 23,
+                  "endLine": 11,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'DestinationAccount' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/Transcation.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 16,
+                  "endLine": 25,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/Transcation.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 23,
+                  "endLine": 12,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
           "message": "Non-nullable property 'CustomerAccounts' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
           "locations": [
             {
@@ -184,75 +320,7 @@
         {
           "ruleId": "CS8618",
           "level": "warning",
-          "message": "Non-nullable property 'SourceAccount' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/Transcation.cs",
-                "region": {
-                  "startLine": 26,
-                  "startColumn": 16,
-                  "endLine": 26,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/Transcation.cs",
-                "region": {
-                  "startLine": 12,
-                  "startColumn": 23,
-                  "endLine": 12,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8618",
-          "level": "warning",
-          "message": "Non-nullable property 'DestinationAccount' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/Transcation.cs",
-                "region": {
-                  "startLine": 26,
-                  "startColumn": 16,
-                  "endLine": 26,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/Transcation.cs",
-                "region": {
-                  "startLine": 13,
-                  "startColumn": 23,
-                  "endLine": 13,
-                  "endColumn": 41
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8618",
-          "level": "warning",
-          "message": "Non-nullable property 'FristName' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "message": "Non-nullable property 'FirstName' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
           "locations": [
             {
               "resultFile": {
@@ -360,9 +428,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/SignUp.cs",
                 "region": {
-                  "startLine": 19,
+                  "startLine": 20,
                   "startColumn": 23,
-                  "endLine": 19,
+                  "endLine": 20,
                   "endColumn": 28
                 }
               }
@@ -373,9 +441,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/SignUp.cs",
                 "region": {
-                  "startLine": 19,
+                  "startLine": 20,
                   "startColumn": 23,
-                  "endLine": 19,
+                  "endLine": 20,
                   "endColumn": 28
                 }
               }
@@ -394,9 +462,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/SignUp.cs",
                 "region": {
-                  "startLine": 22,
+                  "startLine": 25,
                   "startColumn": 23,
-                  "endLine": 22,
+                  "endLine": 25,
                   "endColumn": 31
                 }
               }
@@ -407,9 +475,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/SignUp.cs",
                 "region": {
-                  "startLine": 22,
+                  "startLine": 25,
                   "startColumn": 23,
-                  "endLine": 22,
+                  "endLine": 25,
                   "endColumn": 31
                 }
               }
@@ -428,9 +496,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/SignUp.cs",
                 "region": {
-                  "startLine": 26,
+                  "startLine": 29,
                   "startColumn": 23,
-                  "endLine": 26,
+                  "endLine": 29,
                   "endColumn": 38
                 }
               }
@@ -441,9 +509,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/SignUp.cs",
                 "region": {
-                  "startLine": 26,
+                  "startLine": 29,
                   "startColumn": 23,
-                  "endLine": 26,
+                  "endLine": 29,
                   "endColumn": 38
                 }
               }
@@ -524,15 +592,15 @@
         {
           "ruleId": "CS8618",
           "level": "warning",
-          "message": "Non-nullable property 'FristName' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
+          "message": "Non-nullable property 'FirstName' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/CustomerAccount.cs",
                 "region": {
-                  "startLine": 11,
+                  "startLine": 10,
                   "startColumn": 23,
-                  "endLine": 11,
+                  "endLine": 10,
                   "endColumn": 32
                 }
               }
@@ -543,9 +611,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/CustomerAccount.cs",
                 "region": {
-                  "startLine": 11,
+                  "startLine": 10,
                   "startColumn": 23,
-                  "endLine": 11,
+                  "endLine": 10,
                   "endColumn": 32
                 }
               }
@@ -564,9 +632,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/CustomerAccount.cs",
                 "region": {
-                  "startLine": 12,
+                  "startLine": 11,
                   "startColumn": 23,
-                  "endLine": 12,
+                  "endLine": 11,
                   "endColumn": 31
                 }
               }
@@ -577,9 +645,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/CustomerAccount.cs",
                 "region": {
-                  "startLine": 12,
+                  "startLine": 11,
                   "startColumn": 23,
-                  "endLine": 12,
+                  "endLine": 11,
                   "endColumn": 31
                 }
               }
@@ -598,9 +666,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/CustomerAccount.cs",
                 "region": {
-                  "startLine": 15,
+                  "startLine": 14,
                   "startColumn": 23,
-                  "endLine": 15,
+                  "endLine": 14,
                   "endColumn": 34
                 }
               }
@@ -611,9 +679,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/CustomerAccount.cs",
                 "region": {
-                  "startLine": 15,
+                  "startLine": 14,
                   "startColumn": 23,
-                  "endLine": 15,
+                  "endLine": 14,
                   "endColumn": 34
                 }
               }
@@ -632,9 +700,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/CustomerAccount.cs",
                 "region": {
-                  "startLine": 16,
+                  "startLine": 15,
                   "startColumn": 23,
-                  "endLine": 16,
+                  "endLine": 15,
                   "endColumn": 28
                 }
               }
@@ -645,9 +713,9 @@
               "physicalLocation": {
                 "uri": "file:///C:/Users/jlopez/source/repos/backendproj/BankingAPIs/BankingAPIs/ModelClass/CustomerAccount.cs",
                 "region": {
-                  "startLine": 16,
+                  "startLine": 15,
                   "startColumn": 23,
-                  "endLine": 16,
+                  "endLine": 15,
                   "endColumn": 28
                 }
               }

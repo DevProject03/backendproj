@@ -14,6 +14,11 @@ namespace BankingAPIs.Helper
 
             CreateMap<SignUp, CustomerAccount>();
 
+            CreateMap<Login, LoginDTO>();
+
+            CreateMap<LoginDTO, Login>();
+
+
         }
     }
 }
