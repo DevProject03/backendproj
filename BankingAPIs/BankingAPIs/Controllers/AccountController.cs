@@ -155,11 +155,11 @@ namespace BankingAPIs.Controllers
 
         [HttpPost("Login")]
 
-        public IActionResult Login(string Email, string password)
+        public IActionResult Login(Login login)
         {
             try
             {
-                var b = _customerAccount.Login(Email, password);
+                var b = _customerAccount.Login(login.Email, login.Password);
 
                 if (b == null)
                 {

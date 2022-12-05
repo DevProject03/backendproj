@@ -12,7 +12,7 @@ namespace BankingAPIs.ModelClass
         public DateTime DateOfBirth { get; set; }
 
         public DateTime CreatedDate { get; }
-        //[RegularExpression(@"^\$?\d+(\.(\d{2}))?$")]
+        [RegularExpression("(^(0)(7|8|9){1}(0|1){1}[0–9]{8}", ErrorMessage ="Invalid Phone Format")]
         public string PhoneNumber { get; set; }
         public Gender Genders { get; set; }
         [RegularExpression("[A-Za-z0-9]+@[a-z]+\\.[a-z]{2,3}", ErrorMessage = "Invalid Email Format")]
