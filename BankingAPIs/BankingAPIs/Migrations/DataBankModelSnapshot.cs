@@ -55,11 +55,12 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("AccountTypes")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountTypes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("BVN")
-                        .HasColumnType("int");
+                    b.Property<long>("BVN")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
@@ -78,10 +79,11 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Genders")
-                        .HasColumnType("int");
-
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("MidleName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -123,11 +125,12 @@ namespace BankingAPIs.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountTypes")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountTypes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.Property<int>("BVN")
-                        .HasColumnType("int");
+                    b.Property<long>("BVN")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("ConfirmPassword")
                         .IsRequired()
@@ -144,10 +147,11 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Genders")
-                        .HasColumnType("int");
-
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("MidleName")
                         .IsRequired()
                         .HasColumnType("longtext");
 

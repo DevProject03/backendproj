@@ -30,6 +30,9 @@ namespace BankingAPIs.Repos
             if (_dbcontext.CustomerAccounts.Any(x => x.PhoneNumber == newaccount.PhoneNumber))
                 throw (new ApplicationException("A user with this phoneNumber exists"));
 
+            if (_dbcontext.CustomerAccounts.Any(x => x.BVN == newaccount.BVN))
+                throw (new ApplicationException("A user with this BVN exists"));
+
             newaccount.Password = BCrypt.Net.BCrypt.HashPassword(newaccount.Password);
 
             newaccount.ConfirmPassword = BCrypt.Net.BCrypt.HashPassword(newaccount.ConfirmPassword);
@@ -48,7 +51,7 @@ namespace BankingAPIs.Repos
             _dbcontext.CustomerAccounts.Add(d);
 
             _dbcontext.SaveChanges();
-
+             
 
             return newaccount;
         }

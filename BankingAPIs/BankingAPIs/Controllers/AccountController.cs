@@ -1,12 +1,15 @@
 ﻿using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankingAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[EnableCors(origin: "*", headers: "*", methods: "*")]
+    //[EnableCors()]
     public class AccountController : ControllerBase
     {
 

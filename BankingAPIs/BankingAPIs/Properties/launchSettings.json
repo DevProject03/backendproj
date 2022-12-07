@@ -9,7 +9,7 @@
         "Password": "Anu12345"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:80"
+      "applicationUrl": "https://localhost:4000"
     },
     "IIS Express": {
       "commandName": "IISExpress",

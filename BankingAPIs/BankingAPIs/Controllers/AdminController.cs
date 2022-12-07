@@ -1,10 +1,12 @@
 ﻿using BankingAPIs.Interface;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankingAPIs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[EnableCors()]
     public class AdminController : ControllerBase
     {
         private readonly IAdminLogin _adminlogin;

@@ -1,11 +1,13 @@
 ﻿using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankingAPIs.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    //[EnableCors()]
     public class SignUpController : ControllerBase
     {
 
