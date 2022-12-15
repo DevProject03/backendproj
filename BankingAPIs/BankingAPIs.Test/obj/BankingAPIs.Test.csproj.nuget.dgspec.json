@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj": {}
+    "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj": {
+    "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj",
+        "projectUniqueName": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj",
         "projectName": "BankingAPIs.Test",
-        "projectPath": "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs.Test\\obj\\",
+        "projectPath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj",
+        "packagesPath": "C:\\Users\\jlopez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jlopez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj": {
-                "projectPath": "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj"
+              "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj": {
+                "projectPath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj"
               }
             }
           }
@@ -48,6 +53,10 @@
               "target": "Package",
               "version": "[1.3.1, )"
             },
+            "AutoFixture.AutoMoq": {
+              "target": "Package",
+              "version": "[4.17.0, )"
+            },
             "Autofac.Extras.Moq": {
               "target": "Package",
               "version": "[6.1.0, )"
@@ -60,9 +69,9 @@
               "target": "Package",
               "version": "[6.8.0, )"
             },
-            "Microsoft.AspNet.WebApi.SelfHost": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
               "target": "Package",
-              "version": "[5.2.9, )"
+              "version": "[6.0.9, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
@@ -70,7 +79,11 @@
             },
             "Moq": {
               "target": "Package",
-              "version": "[4.18.2, )"
+              "version": "[4.18.3, )"
+            },
+            "Moq.AutoMock": {
+              "target": "Package",
+              "version": "[3.4.0, )"
             },
             "OpenCover": {
               "target": "Package",
@@ -89,6 +102,10 @@
             "xunit": {
               "target": "Package",
               "version": "[2.4.2, )"
+            },
+            "xunit.analyzers": {
+              "target": "Package",
+              "version": "[1.1.0, )"
             },
             "xunit.runner.visualstudio": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -113,21 +130,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj": {
+    "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
+        "projectUniqueName": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
         "projectName": "BankingAPIs",
-        "projectPath": "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\source\\repos\\backendproj1\\BankingAPIs\\BankingAPIs\\obj\\",
+        "projectPath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
+        "packagesPath": "C:\\Users\\jlopez\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jlopez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -135,6 +156,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -212,6 +234,12 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
             }
           },
           "imports": [
@@ -233,7 +261,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

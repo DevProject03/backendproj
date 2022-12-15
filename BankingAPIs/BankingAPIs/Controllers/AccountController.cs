@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankingAPIs.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Account")]
     [ApiController]
-    //[EnableCors(origin: "*", headers: "*", methods: "*")]
-    //[EnableCors()]
+    
     public class AccountController : ControllerBase
     {
 
@@ -143,6 +142,11 @@ namespace BankingAPIs.Controllers
             {
                 var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
 
+                if (acc == null)
+                {
+                    return BadRequest("Not Found");
+                }
+
                 _customerAccount.DeleteCustomer(acc.Id);
 
                 return NoContent();
@@ -185,21 +189,20 @@ namespace BankingAPIs.Controllers
         {
             try
             {
-                var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
-                try
-                {
-                    return acc != null ? Ok(_customerAccount.UpdateCustomer(AccountNumber, accountDto)) : NotFound("Not Found");
-                }
-                catch (Exception ex)
-                {
+                //var acc = _customerAccount.GetAccountByAccountNumber(AccountNumber);
+                var acc = _customerAccount.UpdateCustomer(AccountNumber, accountDto);
 
-                    return NotFound(ex.Message);
+                if (acc == null)
+                {
+                    return BadRequest();
                 }
+
+                return Ok(acc);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return NotFound(ex.Message);
             }
 
 

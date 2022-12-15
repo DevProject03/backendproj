@@ -8,7 +8,7 @@ namespace BankingAPIs.ModelClass
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string FirstName { get; set; }
-        public string MidleName { get; set; }
+        public string MiddleName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
        // public Gender Genders { get; set; }
@@ -22,16 +22,6 @@ namespace BankingAPIs.ModelClass
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
 
-        public enum AccountType
-        {
-            Savings = 1,
-            Current = 2
-        }
-
-        public enum Gender
-        {
-            Male = 1,
-            Female = 2
-        }
+        
     }
 }

@@ -12,7 +12,7 @@ namespace BankingAPIs.ModelClass
         public string FirstName { get; set; }
         [RegularExpression("^[A-Za-z]*$", ErrorMessage = "Invalid MiddleName Type")]
         [StringLength(12, MinimumLength = 3, ErrorMessage = "Name can't be less than 3 characters or More than 12 characters")]
-        public string MidleName { get; set; }
+        public string MiddleName { get; set; }
         [RegularExpression("^[A-Za-z]*$", ErrorMessage = "Invalid LastName Type")]
         [StringLength(12, MinimumLength = 3, ErrorMessage = "Name can't be less than 3 or More than 12 characters\"")]
         public string LastName { get; set; }

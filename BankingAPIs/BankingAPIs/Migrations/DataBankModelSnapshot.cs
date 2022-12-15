@@ -83,7 +83,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("MidleName")
+                    b.Property<string>("MiddleName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -145,15 +145,18 @@ namespace BankingAPIs.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(12)
+                        .HasColumnType("varchar(12)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(12)
+                        .HasColumnType("varchar(12)");
 
-                    b.Property<string>("MidleName")
+                    b.Property<string>("MiddleName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(12)
+                        .HasColumnType("varchar(12)");
 
                     b.Property<string>("Password")
                         .IsRequired()
