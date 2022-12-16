@@ -29,7 +29,7 @@ pipeline{
         stage('Unit test'){
             steps{
                 script{
-                    sh "cd backendproj && dotnet test BankingAPIs/BankingAPIs.Test"
+                    sh "cd backendproj && dotnet test BankingAPIs/BankingAPIs.Test/ControllerUnitTest"
                 }
             }
         }
