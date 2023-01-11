@@ -39,6 +39,8 @@ namespace BankingAPIs.Repos
 
             _dbcontext.SignUps.Add(newaccount);
 
+            _dbcontext.SaveChanges();
+
             var d = _mapper.Map<CustomerAccount>(newaccount);
 
             var accountNumber = new AccountNumber();
@@ -47,6 +49,7 @@ namespace BankingAPIs.Repos
 
             d.DateCreated = DateTime.Now;
             d.DateUpdated = DateTime.Now;
+            //d.Active = "True";
 
             _dbcontext.CustomerAccounts.Add(d);
 

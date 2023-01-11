@@ -9,7 +9,7 @@
         "Password": "Anu12345"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:4000"
+      "applicationUrl": "https://localhost:8900;https://jlopez-pc.nibss-plc.com:8900"
     },
     "IIS Express": {
       "commandName": "IISExpress",

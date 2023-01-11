@@ -2,6 +2,7 @@
 using BankingAPIs.DTOs;
 using BankingAPIs.Interface;
 using BankingAPIs.ModelClass;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BankingAPIs.Repos
 {
@@ -31,14 +32,18 @@ namespace BankingAPIs.Repos
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.Id == Id).FirstOrDefault();
 
-            if (account == null)
+            if (account == null || account.Active != "True")
             {
                 throw (new ApplicationException("Account Not Found"));
             }
 
-            _dbcontext.CustomerAccounts.Remove(account);
+            account.Active = "false";
+
+            _dbcontext.CustomerAccounts.Update(account);
 
             _dbcontext.SaveChanges();
+
+           // return true;
         }
 
 
@@ -48,6 +53,10 @@ namespace BankingAPIs.Repos
 
             if (account != null)
             {
+                if (account.Active != "True")
+                {
+                    throw (new ApplicationException("Account Deleted"));
+                }
                 return account;
             }
             throw (new ApplicationException("Account Not Found"));
@@ -57,7 +66,7 @@ namespace BankingAPIs.Repos
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber).FirstOrDefault();
 
-            if (account == null)
+            if (account == null || account.Active != "True")
             {
                 throw (new ApplicationException("Account Not Found"));
             }
@@ -69,7 +78,8 @@ namespace BankingAPIs.Repos
         public CustomerAccount GetAccountById(int Id)
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.Id == Id).FirstOrDefault();
-            if (account == null)
+
+            if (account == null || account.Active != "True")
             {
                 throw (new ApplicationException("Account Not Found"));
             }
@@ -79,7 +89,8 @@ namespace BankingAPIs.Repos
         public CustomerAccount GetAccountByName(string Name)
         {
             var account = _dbcontext.CustomerAccounts.Where(x => x.FirstName == Name).FirstOrDefault();
-            if (account == null)
+
+            if (account == null  || account.Active != "True")
             {
                 throw (new ApplicationException("Account Not Found"));
             }
@@ -88,7 +99,7 @@ namespace BankingAPIs.Repos
 
         public IEnumerable<CustomerAccount> GetAccounts()
         {
-            var accounts = _dbcontext.CustomerAccounts.ToArray();
+            var accounts = _dbcontext.CustomerAccounts.ToArray().Where(a => a.Active.Equals("True"));
 
             return accounts;
 
@@ -110,14 +121,14 @@ namespace BankingAPIs.Repos
                 customerAccounts1 = customerAccounts1.Where(a => a.Email.Contains(SearchQuery) || a.AccountGenerated == SearchQuery);
             }
 
-            return customerAccounts1.ToList();
+            return customerAccounts1.ToList().Where(a => a.Active.Equals("True"));
         }
 
         public CustomerAccount Login(string Email, string password)
         {
             var user = _dbcontext.CustomerAccounts.Where(x => x.Email == Email).FirstOrDefault();
 
-            if (user == null)
+            if (user == null || user.Active !="True")
             {
                 throw (new ApplicationException("Invalid Email or Password"));
             }
@@ -137,7 +148,7 @@ namespace BankingAPIs.Repos
         {
             var accountToBeUpdated = _dbcontext.CustomerAccounts.Where(x => x.AccountGenerated == AccountNumber).FirstOrDefault();
 
-            if (accountToBeUpdated == null) throw (new ApplicationException("Account not found"));
+            if (accountToBeUpdated == null || accountToBeUpdated.Active != "True") throw (new ApplicationException("Account not found"));
 
             bool ValidPassword = BCrypt.Net.BCrypt.Verify(NewUpdate.Oldpassword, accountToBeUpdated.Password);
 
@@ -151,7 +162,13 @@ namespace BankingAPIs.Repos
                 //throw error because email exist in db
                 if (_dbcontext.CustomerAccounts.Any(x => x.Email == NewUpdate.Email))
                     throw (new ApplicationException("Email " + NewUpdate.Email + " has been taken"));
+
+
                 accountToBeUpdated.Email = NewUpdate.Email;
+            }
+            else
+            {
+                accountToBeUpdated.Email = accountToBeUpdated.Email;
             }
 
             if (!string.IsNullOrWhiteSpace(NewUpdate.PhoneNumber) && NewUpdate.PhoneNumber != accountToBeUpdated.PhoneNumber)
@@ -162,10 +179,13 @@ namespace BankingAPIs.Repos
 
                 accountToBeUpdated.PhoneNumber = NewUpdate.PhoneNumber;
 
-
+            }
+            else
+            {
+                accountToBeUpdated.PhoneNumber= accountToBeUpdated.PhoneNumber;
             }
 
-            if (!string.IsNullOrWhiteSpace(NewUpdate.PhoneNumber))
+            if (!string.IsNullOrWhiteSpace(NewUpdate.Password))
             {
                 accountToBeUpdated.Password = BCrypt.Net.BCrypt.HashPassword(NewUpdate.Password);
 

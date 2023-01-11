@@ -21,7 +21,8 @@ namespace BankingAPIs.ModelClass
         public string AccountTypes { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
+        public string Active { get; set; } 
 
-        
+
     }
 }

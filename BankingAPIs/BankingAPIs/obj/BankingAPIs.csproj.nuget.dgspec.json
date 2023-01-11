@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj": {}
+    "C:\\Users\\jlopez\\Source\\Repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj": {
+    "C:\\Users\\jlopez\\Source\\Repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
+        "projectUniqueName": "C:\\Users\\jlopez\\Source\\Repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
         "projectName": "BankingAPIs",
-        "projectPath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
+        "projectPath": "C:\\Users\\jlopez\\Source\\Repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
         "packagesPath": "C:\\Users\\jlopez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\obj\\",
+        "outputPath": "C:\\Users\\jlopez\\Source\\Repos\\backendproj\\BankingAPIs\\BankingAPIs\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

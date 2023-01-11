@@ -20,6 +20,7 @@ namespace BankingAPIs.ModelClass
         public DateTime DateOfBirth { get; set; }
         [DataType(DataType.Date)]
         public DateTime CreatedDate { get; }
+        
         [RegularExpression("[0]([7-9][0]|[8][0-1])[0-9]{8}", ErrorMessage ="Invalid Phone Format")]
         public string PhoneNumber { get; set; }
         //public Gender Genders { get; set; }
@@ -31,12 +32,19 @@ namespace BankingAPIs.ModelClass
         public long BVN { get; set; }
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(28, MinimumLength = 7, ErrorMessage = "Password can't be less than 7 characters or More than 15 characters")]
+        [RegularExpression("^[A-Za-z0-9@#$%]*$", ErrorMessage = "Passwords must be at least 8 characters and contain " +
+            "the following: upper case (A-Z), lower case (a-z), number (0-9) and special character (e.g. @#$%)")]
+        
         public string Password { get; set; }
         [Required]
         [Compare("Password", ErrorMessage = "Mismatch of password")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
         public string AccountTypes { get; set; }
+        public string Active { get; } = "True";
+
+
 
 
     }
