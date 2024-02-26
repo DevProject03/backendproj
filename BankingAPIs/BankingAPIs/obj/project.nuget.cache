@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TbSaQEq60HZT5PaON4umn12uXlw68/8+9EkKJ5FXx+l9m6PIdu9MYj1cDV4zMrTtzg2l24BAF5fUcJR1D4aO6A==",
+  "dgSpecHash": "UESxMKoz1+Ki/Zaj0v5U424VpxtKNpDj0TY7q7XP6l9R/QJzyEInadi7eYxtr2pcj/lipt6UC6u4I7QVIMw0jg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
+  "projectFilePath": "C:\\Users\\jlopez\\Source\\Repos\\backendproj\\BankingAPIs\\BankingAPIs\\BankingAPIs.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jlopez\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",
     "C:\\Users\\jlopez\\.nuget\\packages\\autofac.extras.moq\\6.1.0\\autofac.extras.moq.6.1.0.nupkg.sha512",

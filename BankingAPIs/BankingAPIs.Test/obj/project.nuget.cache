@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OlQRC5kOpNHSdPJGqjz9ULrrJGWQSDKLdXmea0zauik5vIa8PuucmIbGmraiL3m7uesyfPlXBvnqPMgzAuFiKA==",
+  "dgSpecHash": "iLgZvv1hLuQP//PDoWXrlzXmcBMUrJYaX0fXD/LigeUe+GLfyPoznbXINvl0ZyFhu8FK5Svv4OpN7NvZaPrjdQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jlopez\\source\\repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj",
+  "projectFilePath": "C:\\Users\\jlopez\\Source\\Repos\\backendproj\\BankingAPIs\\BankingAPIs.Test\\BankingAPIs.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jlopez\\.nuget\\packages\\autocodecoverage\\1.3.1\\autocodecoverage.1.3.1.nupkg.sha512",
     "C:\\Users\\jlopez\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",

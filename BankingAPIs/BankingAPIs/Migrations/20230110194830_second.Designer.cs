@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankingAPIs.Migrations
 {
     [DbContext(typeof(DataBank))]
-    [Migration("20221206190213_dbss")]
-    partial class dbss
+    [Migration("20230110194830_second")]
+    partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,8 +57,13 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("AccountTypes")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountTypes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Active")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<long>("BVN")
                         .HasColumnType("bigint");
@@ -84,7 +89,7 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("MidleName")
+                    b.Property<string>("MiddleName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -126,8 +131,9 @@ namespace BankingAPIs.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountTypes")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountTypes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<long>("BVN")
                         .HasColumnType("bigint");
@@ -145,19 +151,23 @@ namespace BankingAPIs.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(12)
+                        .HasColumnType("varchar(12)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(12)
+                        .HasColumnType("varchar(12)");
 
-                    b.Property<string>("MidleName")
+                    b.Property<string>("MiddleName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(12)
+                        .HasColumnType("varchar(12)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(28)
+                        .HasColumnType("varchar(28)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()

@@ -1,5 +1,6 @@
 ﻿using BankingAPIs.ModelClass;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace BankingAPIs.DATA
 {
@@ -10,7 +11,7 @@ namespace BankingAPIs.DATA
         {
 
         }
-
+        
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CustomerAccount>()

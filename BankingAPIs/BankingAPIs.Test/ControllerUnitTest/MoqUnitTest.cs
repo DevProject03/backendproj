@@ -52,7 +52,7 @@ namespace BankingAPIs.Test.ControllerUnitTest
         public void GetCustomerByAccNumber_Customer()
         {
             //Arrange 
-            CustomerService.Setup(x => x.GetAccountByAccountNumber("0291234587")).Returns(SingleAcc("0291234587"));
+            CustomerService.Setup(x => x.GetAccountByAccountNumber("0291234587")).Returns(singleAcc("0291234587"));
             var controller = new AccountController(CustomerService.Object);
             //Act 
             var result = controller.GetAccountByAccountNumber("0291234587") as OkObjectResult;
@@ -67,7 +67,7 @@ namespace BankingAPIs.Test.ControllerUnitTest
         public void CustomerController_WrongAccNum_ReturnNotFound()
         {
             //Arrange
-            CustomerService.Setup(x => x.GetAccountByAccountNumber("0291234587")).Returns(SingleAcc("0291234587"));
+            CustomerService.Setup(x => x.GetAccountByAccountNumber("0291234587")).Returns(singleAcc("0291234587"));
             var controller = new AccountController(CustomerService.Object);
             //Act 
             var result = controller.GetAccountByAccountNumber("0291234517");
@@ -81,7 +81,7 @@ namespace BankingAPIs.Test.ControllerUnitTest
         public void SearchAccByQuery_Customer()
         {
             //Arange
-            CustomerService.Setup(x => x.SearchAccounts("0291294567")).Returns(SearchAccounts("0291294567"));
+            CustomerService.Setup(x => x.SearchAccounts("0291294567")).Returns(searchAccounts("0291294567"));
             var controller = new AccountController(CustomerService.Object);
             //Act
             var result = controller.Search("0291294567");
@@ -96,7 +96,7 @@ namespace BankingAPIs.Test.ControllerUnitTest
         public void CustomerController_GetUserBy_WrongQuery_ReturnNotFound()
         {
             //Arange
-            CustomerService.Setup(x => x.SearchAccounts("0291294567")).Returns(SearchAccounts("0291294567"));
+            CustomerService.Setup(x => x.SearchAccounts("0291294567")).Returns(searchAccounts("0291294567"));
             var controller = new AccountController(CustomerService.Object);
             //Act
             var result = controller.Search("0291214567");
@@ -128,7 +128,8 @@ namespace BankingAPIs.Test.ControllerUnitTest
         {
             // Arrange
             var customer = customerlist();
-            CustomerService.Setup(x => x.DeleteCustomer(customer[1].Id)).Verifiable();
+            CustomerService.Setup(x => x.GetAccountByAccountNumber(customer[1].AccountGenerated)).Returns(customer[1]);
+            CustomerService.Setup(x => x.DeleteCustomer(customer[1].Id));
 
             var controller = new AccountController(CustomerService.Object);
 
@@ -136,9 +137,8 @@ namespace BankingAPIs.Test.ControllerUnitTest
            var result = controller.DeleteCustomer(customer[1].AccountGenerated);
 
             // Assert
-            Assert.True(true);
-            //CustomerService.Verify();
-            //result.Should().BeOfType(typeof(NoContentResult));
+            
+            result.Should().BeOfType(typeof(NoContentResult));
         }
 
         [Fact]
@@ -147,7 +147,7 @@ namespace BankingAPIs.Test.ControllerUnitTest
         {
             //Arrange
             var customer = customerlist();
-            CustomerService.Setup(x => x.GetAccountById(4)).Returns(SingleCustomer(4));
+            CustomerService.Setup(x => x.GetAccountById(4)).Returns(singleCustomer(4));
             var controller = new AccountController(CustomerService.Object);
             //Act
             var result = controller.GetAccountById(4);
@@ -171,7 +171,7 @@ namespace BankingAPIs.Test.ControllerUnitTest
             };
 
             
-            CustomerService.Setup(x => x.Login(customer[1].Email, customer[1].Password)).Returns(SingleCustomer(customer[1].Id));
+            CustomerService.Setup(x => x.Login(customer[1].Email, customer[1].Password)).Returns(singleCustomer(customer[1].Id));
             var controller = new AccountController(CustomerService.Object);
             //Act
             var result = controller.Login(loginDTO);
@@ -224,7 +224,7 @@ namespace BankingAPIs.Test.ControllerUnitTest
             };
 
 
-            CustomerService.Setup(x => x.UpdateCustomer(customer[1].AccountGenerated,accountDto)).Returns(SingleCustomer(customer[1].Id));
+            CustomerService.Setup(x => x.UpdateCustomer(customer[1].AccountGenerated,accountDto)).Returns(singleCustomer(customer[1].Id));
             var controller = new AccountController(CustomerService.Object);
 
             var result = controller.UpdateCustomer(accountDto, customer[1].AccountGenerated);
@@ -256,7 +256,8 @@ namespace BankingAPIs.Test.ControllerUnitTest
                 AccountGenerated = "0291234587",
                 //accountType = CustomerAccount.AccountType,
                 DateCreated = DateTime.Now,
-                DateOfBirth = DateTime.Now
+                DateOfBirth = DateTime.Now,
+                Active = "True"
             });
             customers.Add(new CustomerAccount()
             {
@@ -271,7 +272,8 @@ namespace BankingAPIs.Test.ControllerUnitTest
                 AccountGenerated = "0291234467",
                 //accountType = CustomerAccount.AccountType,
                 DateCreated = DateTime.Now,
-                DateOfBirth = DateTime.Now
+                DateOfBirth = DateTime.Now,
+                Active = "True"
 
             });
             customers.Add(new CustomerAccount()
@@ -287,7 +289,8 @@ namespace BankingAPIs.Test.ControllerUnitTest
                 AccountGenerated = "0291294567",
                 //accountType = CustomerAccount.AccountType,
                 DateCreated = DateTime.Now,
-                DateOfBirth = DateTime.Now
+                DateOfBirth = DateTime.Now,
+                Active = "True"
 
             });
 
@@ -295,19 +298,19 @@ namespace BankingAPIs.Test.ControllerUnitTest
             return customers;
         }
 
-        private CustomerAccount SingleCustomer(int id)
+        private CustomerAccount singleCustomer(int id)
         {
             List<CustomerAccount> customer = customerlist();
             return customer.FirstOrDefault(a => a.Id == id);
         }
 
-        private CustomerAccount SingleAcc(string AccNumber)
+        private CustomerAccount singleAcc(string AccNumber)
         {
             List<CustomerAccount> customer = customerlist();
             return customer.FirstOrDefault(a => a.AccountGenerated == AccNumber);
         }
 
-        private IEnumerable<CustomerAccount> SearchAccounts(string SearchQuery)
+        private IEnumerable<CustomerAccount> searchAccounts(string SearchQuery)
         {
             List<CustomerAccount> customer = customerlist();
             return customer.Where(a => a.Email.Contains(SearchQuery) || a.AccountGenerated == SearchQuery);

@@ -59,6 +59,10 @@ namespace BankingAPIs.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Active")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<long>("BVN")
                         .HasColumnType("bigint");
 
@@ -160,7 +164,8 @@ namespace BankingAPIs.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(28)
+                        .HasColumnType("varchar(28)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()

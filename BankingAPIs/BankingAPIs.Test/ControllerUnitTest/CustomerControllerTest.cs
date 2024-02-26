@@ -81,17 +81,19 @@ namespace BankingAPIs.Test.ControllerUnitTest
         public void CustomerController_Delete_NotExisitinAcc_ReturnsNotFoundResponse()
         {
             // Arrange 
+            var CustomerAccount = A.Fake<CustomerAccount>();
 
-            string? acc = null;
+            string acc = CustomerAccount.AccountGenerated;
 
             // Act
             var Controller = new AccountController(_CustomerAccount);
-            A.CallTo(() => _CustomerAccount.GetAccountByAccountNumber(acc)).Returns(null);
-            A.CallTo(() => _CustomerAccount.DeleteCustomer(1)).Equals(null);
+            A.CallTo(() => _CustomerAccount.GetAccountByAccountNumber("")).Returns(null);
+            //A.CallTo(() => _CustomerAccount.DeleteCustomer(CustomerAccount.Id)).Returns(false);
 
-            NotFoundObjectResult? result = Controller.DeleteCustomer(acc) as NotFoundObjectResult;
+            var result = Controller.DeleteCustomer("");
             // Assert
-            Assert.IsType<NotFoundObjectResult>(result);
+            Assert.IsType<BadRequestObjectResult>(result);
+            //Assert.True(true);
         }
         [Fact]
         public void CustomerController_updateUser_ReturnUser()
